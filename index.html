@@ -1,4 +1,4 @@
-<!-- Anak Emak Store - Shop Page Template for Blogspot -->
+<!-- Anak Emak Store - Shop Page -->
 <!doctype html>
 <html lang="id">
 <head>
@@ -10,17 +10,20 @@
     :root{--accent:#25D366;--bg:#0f1720;--card:#0b1220;--muted:#9aa4b2}
     html,body{margin:0;padding:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(180deg,#071020 0%, #071827 100%);color:#e6eef6}
     .wrap{max-width:980px;margin:24px auto;padding:20px}
-    header{display:flex;align-items:center;gap:16px}
+    header{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
     .logo{font-family:'Press Start 2P',monospace;font-size:20px;color:var(--accent)}
     .tag{color:var(--muted);font-size:13px}
+    h3{margin-top:32px}
     .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:18px}
-    .prod{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:12px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.03)}
+    .prod{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:12px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.03);transition:transform 0.2s ease}
+    .prod:hover{transform:translateY(-4px)}
     .prod img{width:100%;height:160px;object-fit:cover;border-radius:6px}
     .pname{font-weight:700;margin:8px 0}
     .price{color:var(--accent);font-weight:700}
     .old-price{text-decoration:line-through;color:var(--muted);font-size:14px;margin-left:6px}
     .desc{font-size:13px;color:var(--muted);text-align:left;margin-top:8px}
     .wa-btn{display:inline-block;margin-top:8px;background:#25D366;color:#032A16;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700}
+    .wa-btn:hover{background:#20b85d}
   </style>
 </head>
 <body>
@@ -34,7 +37,7 @@
   <div class="products">
 
     <div class="prod">
-      <img src="https://i.imgur.com/placeholder.png" alt="Minecraft Java & Bedrock Permanent">
+      <img src="https://www.minecraft.net/content/dam/games/minecraft/key-art/MCJavaBedrock.jpg" alt="Minecraft Java & Bedrock Permanent">
       <div class="pname">Minecraft Java & Bedrock [Permanent]</div>
       <div class="price">Rp 150.000<span class="old-price">Rp 230.000</span></div>
       <a class="wa-btn" href="https://wa.me/62NOMOR_WA?text=Halo%20Min,%20saya%20mau%20pesan%20Minecraft%20Java%20%26%20Bedrock%20Permanent" target="_blank">💬 Order via WhatsApp</a>
@@ -42,7 +45,7 @@
     </div>
 
     <div class="prod">
-      <img src="https://i.imgur.com/placeholder.png" alt="MC Java & Bedrock Redeem Code Permanent">
+      <img src="https://www.minecraft.net/content/dam/games/minecraft/screenshots/mc_redeem_code.jpg" alt="MC Java & Bedrock Redeem Code Permanent">
       <div class="pname">MC Java & Bedrock Redeem Code [Permanent]</div>
       <div class="price">Rp 305.000<span class="old-price">Rp 430.000</span></div>
       <a class="wa-btn" href="https://wa.me/62NOMOR_WA?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Java%20%26%20Bedrock%20Redeem%20Code%20Permanent" target="_blank">💬 Order via WhatsApp</a>
@@ -50,7 +53,7 @@
     </div>
 
     <div class="prod">
-      <img src="https://i.imgur.com/placeholder.png" alt="MC Legends Redeem Code Permanent">
+      <img src="https://www.minecraft.net/content/dam/games/minecraft/key-art/MC_Legends_Key_Art.jpg" alt="MC Legends Redeem Code Permanent">
       <div class="pname">MC Legends</div>
       <div class="price">Rp 60.000<span class="old-price">Rp 85.000</span></div>
       <a class="wa-btn" href="https://wa.me/62NOMOR_WA?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Legends" target="_blank">💬 Order via WhatsApp</a>
@@ -58,7 +61,7 @@
     </div>
 
     <div class="prod">
-      <img src="https://i.imgur.com/placeholder.png" alt="MC Dungeons Permanent">
+      <img src="https://www.minecraft.net/content/dam/games/dungeons/key-art/MCD_Hero_Art.jpg" alt="MC Dungeons Permanent">
       <div class="pname">MC Dungeons [Permanent]</div>
       <div class="price">Rp 205.000<span class="old-price">Rp 340.000</span></div>
       <a class="wa-btn" href="https://wa.me/62NOMOR_WA?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Dungeons%20Permanent" target="_blank">💬 Order via WhatsApp</a>
@@ -66,7 +69,7 @@
     </div>
 
     <div class="prod">
-      <img src="https://i.imgur.com/placeholder.png" alt="MC Bedrock for Windows">
+      <img src="https://www.minecraft.net/content/dam/games/minecraft/screenshots/mc_windows10.jpg" alt="MC Bedrock for Windows">
       <div class="pname">MC Bedrock for Windows</div>
       <div class="price">Rp 55.000<span class="old-price">Rp 78.000</span></div>
       <a class="wa-btn" href="https://wa.me/62NOMOR_WA?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Bedrock%20for%20Windows" target="_blank">💬 Order via WhatsApp</a>
@@ -74,7 +77,7 @@
     </div>
 
     <div class="prod">
-      <img src="https://i.imgur.com/placeholder.png" alt="Skin Minecraft">
+      <img src="https://www.minecraft.net/content/dam/games/minecraft/screenshots/mc_skinpack.jpg" alt="Skin Minecraft">
       <div class="pname">Skin Minecraft</div>
       <div class="price">Rp 15.000 - 20.000</div>
       <a class="wa-btn" href="https://wa.me/62NOMOR_WA?text=Halo%20Min,%20saya%20mau%20pesan%20Skin%20Minecraft" target="_blank">💬 Order via WhatsApp</a>
