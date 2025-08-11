@@ -6,6 +6,30 @@
   <title>Jasa Promosi - Anak Emak Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
+/* Tambahan animasi background dan efek hover produk untuk semua halaman */
+
+/* Background animasi */
+html, body {
+  background: linear-gradient(270deg, #071020, #071827, #0f1b2e);
+  background-size: 600% 600%;
+  animation: gradientMove 20s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Efek hover produk */
+.prod {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.prod:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
     :root {
       --accent: #25D366;
       --bg: #0f1720;
