@@ -1,31 +1,122 @@
-<!-- Anak Emak Store - Jasa Promosi Page -->
 <!doctype html>
 <html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Anak Emak Store - Jasa Promosi</title>
+  <title>Jasa Promosi - Anak Emak Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{--accent:#25D366;--bg:#0f1720;--card:#0b1220;--muted:#9aa4b2}
-    html,body{margin:0;padding:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(180deg,#071020 0%, #071827 100%);color:#e6eef6}
-    .wrap{max-width:980px;margin:24px auto;padding:20px}
-    header{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-    .logo{font-family:'Press Start 2P',monospace;font-size:20px;color:var(--accent)}
-    .tag{color:var(--muted);font-size:13px}
-    .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:18px}
-    .prod{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:12px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,0.03)}
-    .prod img{width:100%;height:160px;object-fit:cover;border-radius:6px}
-    .pname{font-weight:700;margin:8px 0}
-    .price{color:var(--accent);font-weight:700}
-    .old-price{text-decoration:line-through;color:var(--muted);font-size:14px;margin-left:6px}
-    .desc{font-size:13px;color:var(--muted);text-align:left;margin-top:8px;line-height:1.4em}
-    .wa-btn{display:inline-block;margin-top:8px;background:#25D366;color:#032A16;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700}
+    :root {
+      --accent: #25D366;
+      --bg: #0f1720;
+      --card: #0b1220;
+      --muted: #9aa4b2;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg,#071020 0%, #071827 100%);
+      color: #e6eef6;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 24px auto;
+      padding: 20px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 20px;
+      color: var(--accent);
+    }
+    .tag {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .tag a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .tag a:hover {
+      color: var(--accent);
+    }
+    h3 {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .prod {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.03);
+      display: flex;
+      flex-direction: column;
+    }
+    .pname {
+      font-weight: 700;
+      margin: 8px 0;
+      text-align: center;
+    }
+    .price {
+      color: var(--accent);
+      font-weight: 700;
+      text-align: center;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: var(--muted);
+      font-size: 14px;
+      margin-left: 6px;
+    }
+    .desc {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: left;
+      margin-top: 8px;
+      flex-grow: 1;
+    }
+    .wa-btn {
+      display: inline-block;
+      margin-top: 8px;
+      background: #25D366;
+      color: #032A16;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 30px;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 6px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 <div class="wrap">
- <header>
+  <header>
     <div class="logo">ANAK EMAK STORE</div>
     <nav class="tag">
       <a href="index.html">Minecraft Account</a> •
@@ -34,112 +125,130 @@
     </nav>
   </header>
 
-  <h3>📢 Jasa Promosi</h3>
+  <h3>📺 YouTube</h3>
   <div class="products">
-
-    <!-- YOUTUBE -->
     <div class="prod">
-      <img src="https://i.imgur.com/9aB8kYx.png" alt="Promote YouTube Short A">
-      <div class="pname">YouTube Short [A] (Script Admin)</div>
-      <div class="price">Rp 75.000<span class="old-price">Rp 89.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Promote%20YouTube%20Short%20A" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc">
-        Kualitas Video 4K 60FPS!<br>
-        <b>S&K:</b><br>
-        - Script dari admin/owner server<br>
-        - Proses 1–2 jam setelah take video<br>
-        - Support Minecraft Java & Bedrock<br>
-        - Durasi ±1 menit<br>
-        - 1x revisi jika script dari admin<br>
-        - Tidak boleh upload jika bukan owning content
-      </div>
+      <div class="pname">Paket YT 1</div>
+      <div class="price">Rp 50.000<span class="old-price">Rp 80.000</span></div>
+      <div class="desc">Deskripsi singkat promosi YouTube...</div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
     </div>
-
     <div class="prod">
-      <img src="https://i.imgur.com/9aB8kYx.png" alt="Promote YouTube Short B">
-      <div class="pname">YouTube Short [B] (Script Kreator)</div>
-      <div class="price">Rp 80.000<span class="old-price">Rp 98.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Promote%20YouTube%20Short%20B" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc">
-        Kualitas Video 4K 60FPS!<br>
-        <b>S&K:</b><br>
-        - Script dari kreator<br>
-        - Proses 1–2 jam setelah take video<br>
-        - Support Minecraft Java & Bedrock<br>
-        - Durasi ±1 menit<br>
-        - Tidak ada revisi<br>
-        - Tidak boleh upload jika bukan owning content
-      </div>
+      <div class="pname">Paket YT 2</div>
+      <div class="price">Rp 75.000<span class="old-price">Rp 100.000</span></div>
+      <div class="desc">Deskripsi singkat promosi YouTube...</div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
     </div>
-
-    <!-- TIKTOK -->
     <div class="prod">
-      <img src="https://i.imgur.com/EOZ2lWp.png" alt="Promote TikTok A">
-      <div class="pname">TikTok [A] (Script Admin)</div>
-      <div class="price">Rp 75.000<span class="old-price">Rp 80.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Promote%20TikTok%20A" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc">
-        Kualitas Video 4K 60FPS!<br>
-        <b>S&K:</b><br>
-        - Script dari admin/owner server<br>
-        - Support Minecraft Java & Bedrock<br>
-        - Proses 1–2 jam<br>
-        - 1x revisi jika script dari admin
-      </div>
+      <div class="pname">Paket YT 3</div>
+      <div class="price">Rp 90.000<span class="old-price">Rp 120.000</span></div>
+      <div class="desc">Deskripsi singkat promosi YouTube...</div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
     </div>
-
-    <div class="prod">
-      <img src="https://i.imgur.com/EOZ2lWp.png" alt="Promote TikTok B">
-      <div class="pname">TikTok [B] (Script Kreator)</div>
-      <div class="price">Rp 80.000<span class="old-price">Rp 97.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Promote%20TikTok%20B" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc">
-        Kualitas Video 4K 60FPS!<br>
-        <b>S&K:</b><br>
-        - Script dari kreator<br>
-        - Support Minecraft Java & Bedrock<br>
-        - Proses 1–2 jam<br>
-        - Tidak ada revisi
-      </div>
-    </div>
-
-    <!-- WHATSAPP -->
-    <div class="prod">
-      <img src="https://i.imgur.com/SyidAOs.png" alt="Promote WhatsApp Text+Gambar Server">
-      <div class="pname">WhatsApp Text + Gambar (Server)</div>
-      <div class="price">Rp 40.000<span class="old-price">Rp 50.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20promosi%20WhatsApp%20Text+Gambar%20Server" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc">
-        - Text dari admin<br>
-        - 1 gambar<br>
-        - Tidak terima promosi add-on/texturepack
-      </div>
-    </div>
-
-    <div class="prod">
-      <img src="https://i.imgur.com/SyidAOs.png" alt="Promote WhatsApp Text Only Server">
-      <div class="pname">WhatsApp Text Only (Server)</div>
-      <div class="price">Rp 30.000<span class="old-price">Rp 45.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20promosi%20WhatsApp%20Text%20Only%20Server" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc">
-        - Text dari admin<br>
-        - Tidak terima promosi add-on/texturepack
-      </div>
-    </div>
-
-    <div class="prod">
-      <img src="https://i.imgur.com/SyidAOs.png" alt="Promote WhatsApp Text+Gambar Store">
-      <div class="pname">WhatsApp Text + Gambar (Store)</div>
-      <div class="price">Rp 50.000<span class="old-price">Rp 78.900</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20promosi%20WhatsApp%20Text+Gambar%20Store" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc">
-        - Text dari admin<br>
-        - 1 gambar<br>
-        - Tidak terima promosi add-on/texturepack
-      </div>
-    </div>
-
   </div>
+
+  <h3>🎵 TikTok</h3>
+  <div class="products">
+    <div class="prod">
+      <div class="pname">Paket TikTok 1</div>
+      <div class="price">Rp 40.000<span class="old-price">Rp 60.000</span></div>
+      <div class="desc">Deskripsi singkat promosi TikTok...</div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
+    </div>
+    <div class="prod">
+      <div class="pname">Paket TikTok 2</div>
+      <div class="price">Rp 65.000<span class="old-price">Rp 90.000</span></div>
+      <div class="desc">Deskripsi singkat promosi TikTok...</div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
+    </div>
+    <div class="prod">
+      <div class="pname">Paket TikTok 3</div>
+      <div class="price">Rp 80.000<span class="old-price">Rp 110.000</span></div>
+      <div class="desc">Deskripsi singkat promosi TikTok...</div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
+    </div>
+  </div>
+
+  <h3>💬 Saluran WhatsApp</h3>
+  <div class="products">
+    <div class="prod">
+      <div class="pname">Paket WA 1</div>
+      <div class="price">Rp 25.000<span class="old-price">Rp 40.000</span></div>
+      <div class="desc">Deskripsi singkat promosi Saluran WhatsApp...</div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
+    </div>
+    <div class="prod">
+      <div class="pname">Paket WA 2</div>
+      <div class="price">Rp 35.000<span class="old-price">Rp 50.000</span></div>
+      <div class="desc">Deskripsi singkat promosi Saluran WhatsApp...</div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
+    </div>
+    <div class="prod">
+      <div class="pname">Paket WA 3</div>
+      <div class="price">Rp 45.000<span class="old-price">Rp 60.000</span></div>
+      <div class="desc">Deskripsi singkat promosi Saluran WhatsApp...</div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
+    </div>
+  </div>
+
+  <h3>🎁 Bundling Gacor</h3>
+  <div class="products">
+    <div class="prod">
+      <div class="pname">TikTok + YT Short A</div>
+      <div class="price">Rp 100.000<span class="old-price">Rp 176.000</span></div>
+      <div class="desc">
+        Script dari admin server, upload TikTok & YT Short, kualitas video 4K 60FPS.<br><br>
+        📜 <b>S&K Singkat:</b>
+        <ul>
+          <li>Proses setelah pembayaran</li>
+          <li>Kirim bukti bayar, logo & fitur server</li>
+          <li>Support Minecraft Java & Bedrock</li>
+          <li>Durasi ±1 menit, 1x revisi</li>
+          <li>Boleh request jam upload</li>
+        </ul>
+      </div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
+    </div>
+
+    <div class="prod">
+      <div class="pname">TikTok + YT Short B</div>
+      <div class="price">Rp 90.000<span class="old-price">Rp 140.000</span></div>
+      <div class="desc">
+        Script dari kreator, upload TikTok & YT Short, kualitas video 4K 60FPS.<br><br>
+        📜 <b>S&K Singkat:</b>
+        <ul>
+          <li>Proses setelah pembayaran</li>
+          <li>Kirim bukti bayar, logo & fitur server</li>
+          <li>Support Minecraft Java & Bedrock</li>
+          <li>Durasi ±1 menit, tanpa revisi</li>
+          <li>Boleh request jam upload</li>
+        </ul>
+      </div>
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
+    </div>
+
+<div class="desc">
+  Promosi di YT, TikTok & Saluran WhatsApp. Pemilik server/store boleh menggunakan konten promosi di media sendiri.<br><br>
+  💡 <b>Diskon khusus store-only:</b> Rp 90.000 (video di-upload hanya di sosial media store, tetap promosi di saluran WA).<br><br>
+  📜 <b>Keuntungan:</b>
+  <ul>
+    <li>Kendali penuh atas konten</li>
+    <li>Hak penggunaan komersial</li>
+    <li>Perlindungan hak cipta</li>
+    <li>Kualitas video 4K 60FPS</li>
+  </ul>
+</div>
+
+      <a class="wa-btn" href="#">💬 Order via WhatsApp</a>
+    </div>
+  </div>
+
+  <footer>
+    🌐 Sosial Media:
+    <a href="https://www.tiktok.com/@anakemak.id" target="_blank">TikTok</a> •
+    <a href="https://www.youtube.com/@anakemakid" target="_blank">YouTube</a> •
+    <a href="https://whatsapp.com/channel/0029Vak79Tg3bbV9Hey2Zq2N" target="_blank">Saluran WhatsApp</a>
+  </footer>
 </div>
 </body>
 </html>
