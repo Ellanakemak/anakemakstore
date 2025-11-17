@@ -254,58 +254,5 @@ html, body {
     <a href="https://whatsapp.com/channel/0029Vak79Tg3bbV9Hey2Zq2N" target="_blank">Saluran WhatsApp</a>
   </footer>
 </div>
-  <script>
-document.addEventListener('DOMContentLoaded', (event) => {
-  // 1. Daftar Nama dan Produk
-  const names = ['Fauzan', 'Rizky P.', 'Siti N.', 'Budi H.', 'Ahmad K.', 'Dewi S.', 'Vina M.', 'Joko T.', 'Dinda A.', 'Raffi'];
-  const products = [
-    'Minecraft Java & Bedrock',
-    'MC Java & Bedrock Redeem Code',
-    'MC Dungeons',
-    'MC Bedrock for Windows',
-    'Skin Minecraft',
-    'Realms',
-    'OPTIFINE CAPE'
-  ];
-
-  const popup = document.getElementById('buyPopup');
-  const popupText = popup.querySelector('.popup-text');
-
-  // Fungsi untuk menampilkan pop-up
-  function showPopup() {
-    // Ambil nama dan produk secara acak
-    const randomName = names[Math.floor(Math.random() * names.length)];
-    const randomProduct = products[Math.floor(Math.random() * products.length)];
-    const timestamp = Math.floor(Math.random() * 5) + 1; // Waktu pembelian acak (1-5 menit lalu)
-
-    // Atur teks pop-up
-    popupText.innerHTML = `<b>${randomName}</b> baru saja membeli <b>${randomProduct}</b><br><small style="color:var(--muted);">${timestamp} menit yang lalu</small>`;
-    
-    // Tampilkan pop-up
-    popup.classList.add('show');
-
-    // Sembunyikan pop-up setelah 5 detik
-    setTimeout(() => {
-      popup.classList.remove('show');
-    }, 5000); // Tampil selama 5 detik
-  }
-
-  // Fungsi untuk menjadwalkan pop-up berikutnya
-  function schedulePopup() {
-    // Jeda waktu acak antara 10 hingga 20 detik (10000ms - 20000ms)
-    const randomDelay = Math.floor(Math.random() * 10000) + 10000; 
-
-    setTimeout(() => {
-      showPopup();
-      schedulePopup(); // Jadwalkan pop-up berikutnya
-    }, randomDelay);
-  }
-
-  // Mulai menampilkan pop-up setelah jeda awal 5 detik
-  setTimeout(schedulePopup, 5000);
-});
-</script>
 </body>
 </html>
-
-bisa tambahin pop up pembelian gak yang muncul beberapa detik sekali contoh format [nama] baru saja membeli [produk]
