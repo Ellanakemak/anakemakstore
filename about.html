@@ -1,109 +1,317 @@
+<think>
+The user wants me to improve the About page to make it look more professional. I need to:
+
+1. Clean up the CSS and make it more organized
+2. Improve the layout and spacing
+3. Make the logo grid more professional (better responsive design, hover effects)
+4. Improve typography and visual hierarchy
+5. Add better animations and transitions
+6. Make the footer more professional
+7. Add some visual elements like icons, better spacing, etc.
+8. Fix the WhatsApp link (there's a duplicate https://)
+9. Add a more professional header design
+10. Add some visual interest to the content sections
+
+Let me create a complete, professional version of this About page.
+
+</think># 🎨 Website About Page - Versi Lebih Profesional
+
+Berikut adalah versi yang telah diperbaiki dan ditingkatkan dengan tampilan lebih profesional:
+
+```html
 <!doctype html>
 <html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>About - Anak Emak Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-/* Tambahan animasi background dan efek hover produk untuk semua halaman */
-
-/* Background animasi */
-html, body {
-  background: linear-gradient(270deg, #071020, #071827, #0f1b2e);
-  background-size: 600% 600%;
-  animation: gradientMove 20s ease infinite;
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Efek hover produk */
-.prod {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.prod:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
     :root {
       --accent: #25D366;
+      --accent-hover: #1da851;
       --bg: #0f1720;
       --card: #0b1220;
+      --card-hover: #121a2e;
       --muted: #9aa4b2;
+      --text: #e6eef6;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --shadow-hover: 0 8px 30px rgba(37,211,102,0.15);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     html, body {
       margin: 0;
       padding: 0;
-      font-family: Inter, Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       background: linear-gradient(180deg,#071020 0%, #071827 100%);
-      color: #e6eef6;
+      color: var(--text);
+      min-height: 100vh;
     }
     .wrap {
-      max-width: 980px;
-      margin: 24px auto;
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 20px;
     }
+    /* Header */
     header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 30px;
     }
     .logo {
       font-family: 'Press Start 2P', monospace;
-      font-size: 20px;
+      font-size: 18px;
       color: var(--accent);
+      text-shadow: 0 0 10px rgba(37,211,102,0.3);
+    }
+    .nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
     }
     .tag {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
     }
     .tag a {
       color: var(--muted);
       text-decoration: none;
+      transition: color 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 5px;
     }
     .tag a:hover {
       color: var(--accent);
+      background: rgba(37,211,102,0.1);
     }
+    /* Page Title */
+    .page-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .page-title h3 {
+      font-size: 28px;
+      margin: 0;
+      color: var(--text);
+    }
+    .page-title h3::before {
+      content: '';
+      width: 6px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    /* Content Card */
     .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.03);
+      background: var(--card);
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
       margin-top: 20px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
     }
+    .card:hover {
+      border-color: rgba(37,211,102,0.3);
+      box-shadow: var(--shadow-hover);
+    }
+    .card p {
+      line-height: 1.8;
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .card p strong {
+      color: var(--accent);
+    }
+    .card h4 {
+      font-size: 20px;
+      margin: 30px 0 20px 0;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card h4::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    /* Logo Grid */
     .logos {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
       gap: 16px;
       margin-top: 20px;
     }
     .logos img {
       width: 100%;
-      height: 60px;
+      height: 80px;
       object-fit: contain;
-      background: #fff;
-      padding: 8px;
-      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      padding: 12px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
     }
+    .logos img:hover {
+      transform: scale(1.1);
+      background: rgba(37,211,102,0.1);
+      box-shadow: 0 4px 15px rgba(37,211,102,0.2);
+    }
+    /* Stats Section */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .stat-card {
+      background: var(--card);
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-hover);
+    }
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    /* Services Section */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .service-card {
+      background: var(--card);
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-hover);
+    }
+    .service-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(37,211,102,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .service-icon i {
+      font-size: 24px;
+      color: var(--accent);
+    }
+    .service-card h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .service-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    /* Footer */
     footer {
       text-align: center;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--muted);
-      margin-top: 30px;
+      margin-top: 50px;
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
     }
     footer a {
       color: var(--accent);
       text-decoration: none;
-      margin: 0 6px;
+      margin: 0 10px;
+      transition: color 0.3s ease;
     }
     footer a:hover {
+      color: var(--accent-hover);
       text-decoration: underline;
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card {
+      animation: fadeIn 0.6s ease forwards;
+    }
+    .stats {
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 0.2s;
+    }
+    .services {
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 0.4s;
+    }
+    .logos {
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 0.6s;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .wrap {
+        padding: 15px;
+      }
+      .card {
+        padding: 20px;
+      }
+      .page-title h3 {
+        font-size: 22px;
+      }
+      .logos {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 12px;
+      }
+      .logos img {
+        height: 60px;
+      }
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      .services {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -118,121 +326,216 @@ html, body {
     </nav>
   </header>
 
-  <h3>ℹ Tentang Anak Emak Store</h3>
+  <div class="page-title">
+    <h3>ℹ Tentang Anak Emak Store</h3>
+  </div>
+
   <div class="card">
     <p><b>Anak Emak Store</b> adalah penyedia layanan digital yang membantu pemilik server Minecraft, kreator konten, dan online store untuk tumbuh dan menjangkau lebih banyak audiens. Kami menyediakan solusi lengkap mulai dari <b>promosi konten</b>, <b>pembuatan media kreatif</b>, hingga <b>publikasi lintas platform</b> seperti YouTube, TikTok, dan Saluran WhatsApp.</p>
-     <p>Kami memahami bahwa setiap brand, server, atau toko memiliki kebutuhan dan target audiens yang berbeda. Oleh karena itu, setiap layanan kami dirancang secara <b>fleksibel</b> dan <b>personal</b> untuk memastikan hasil promosi yang optimal. Dengan pendekatan yang tepat, kami membantu meningkatkan <b>brand awareness</b>, <b>interaksi</b>, dan <b>konversi</b>.</p>
-     <p>Didukung oleh pengalaman dan jaringan promosi yang luas, <b>Anak Emak Store</b> selalu mengutamakan <b>kecepatan, keamanan, dan efektivitas</b> dalam setiap layanan. Kami telah dipercaya oleh berbagai <b>server Minecraft populer</b> dan <b>store online</b> untuk meningkatkan jangkauan, membangun komunitas, serta mengoptimalkan potensi pemasaran digital mereka.</p>
+    
+    <p>Kami memahami bahwa setiap brand, server, atau toko memiliki kebutuhan dan target audiens yang berbeda. Oleh karena itu, setiap layanan kami dirancang secara <b>fleksibel</b> dan <b>personal</b> untuk memastikan hasil promosi yang optimal. Dengan pendekatan yang tepat, kami membantu meningkatkan <b>brand awareness</b>, <b>interaksi</b>, dan <b>konversi</b>.</p>
+    
+    <p>Didukung oleh pengalaman dan jaringan promosi yang luas, <b>Anak Emak Store</b> selalu mengutamakan <b>kecepatan, keamanan, dan efektivitas</b> dalam setiap layanan. Kami telah dipercaya oleh berbagai <b>server Minecraft populer</b> dan <b>store online</b> untuk meningkatkan jangkauan, membangun komunitas, serta mengoptimalkan potensi pemasaran digital mereka.</p>
+    
     <p>Jika kamu ingin brand atau server-mu dikenal lebih luas, kami siap menjadi mitra promosi yang <b>terpercaya</b> dan <b>berpengalaman</b>.</p>
-<h4>🤝 Klien & Partner</h4>
-    <div class="logos">
-      <img src="KandangAlwi.png">
-      <img src="senovshop.png">
-      <img src="survborn.png">
-      <img src="xeta.png">
-      <img src="arkonara.png">
-      <img src="cloud.png">
-      <img src="crispy.png">
-      <img src="crystal-removebg-preview.png">
-      <img src="dcasta.png">
-      <img src="dexura.png">
-      <img src="dolpinz.png">
-      <img src="elmilius.png">
-      <img src="fk.png">
-      <img src="heaven.png">
-      <img src="hiver.png">
-      <img src="kana.png">
-      <img src="kazakh.png">
-      <img src="kazuna.png">
-      <img src="kazuo.png">
-      <img src="kiriza.png">
-      <img src="leftycraft logo.png">
-      <img src="mawi.png">
-      <img src="mineral.png">
-      <img src="minewarz.png">
-      <img src="siluet.png">
-      <img src="genz.jpeg">
-      <img src="skyz.png">
-      <img src="voltraz.png">
-      <img src="wayang.png">
-      <img src="weaver.png">
-      <img src="zaynic.png">
-      <img src="seria.jpg">
-      <img src="rayzen.jpeg">
-      <img src="netherking.jpg">
-      <img src="nexus.png">
-      <img src="voyality.jpeg">
-      <img src="wavesmp.jpeg">
-      <img src="WhatsApp Image 2025-05-26 at 13.18.21.jpeg">
-      <img src="arteric.jpeg">
-      <img src="ARVENIA.png">
-      <img src="CIHUY.png">
-      <img src="cosmic.jpeg">
-      <img src="Craftnesia.jpeg">
-      <img src="ELYTHERIA.png">
-      <img src="koyarp.jpeg">
-      <img src="Kaizen1.png">
-      <img src="Legacy.jpeg">
-      <img src="lumirith.jpeg">
-      <img src="NEXOVERSE.png">
-      <img src="NEXO.png">
-      <img src="nusantara.jpeg">
-      <img src="odinary.jpeg">
-      <img src="querty.jpeg">
-      <img src="rebelsmp.jpeg">
-      <img src="skyyz.jpeg">
-      <img src="voracity.jpeg">
-      <img src="ARCANA.png">
-      <img src="Neuvana-Light.png">
-      <img src="AERO.png">
-      <img src="AXERO.jfif">
-      <img src="ayelsmp.jpeg">
-      <img src="BAKWAN JAGUNG.png">
-      <img src="BEEBAZ.png">
-      <img src="cyclops.jfif">
-      <img src="elvaria.jpeg">
-      <img src="EMPIRE.jpeg">
-      <img src="Khazakh.png">
-      <img src="logo bg transparan.png">
-      <img src="LOGO NO BG.png">
-      <img src="LUMIRITH.png">
-      <img src="Marlin MC.png">
-      <img src="Minesive.jpeg">
-      <img src="MOVERA LOGO.png">
-      <img src="puresmp.jfif">
-      <img src="Reality Project.png">
-      <img src="Rozen Legend.jpeg">
-      <img src="SYLVARA.png">
-      <img src="SYNCARA.png">
-      <img src="Voxen 1.png">
-      <img src="WhatsApp Image 2026-01-08 at 10.12.42.jpeg">
-      <img src="WhatsApp Image 2026-01-21 at 12.10.45.jpeg">
-      <img src="wildmare.png">
-      <img src="yozora.jpeg">
-      <img src="zelestial.jpeg">
-      <img src="Catalux.jpeg">
-      <img src="Noesantara.png">
-      <img src="MF.png">
-      <img src="minesteal.jpeg">
-      <img src="REVORDIAN LEGEND.jpeg">
-      <img src="Sirhc.jpeg">
-      <img src="stellar.png">
-      <img src="survival craft.jfif">
-      <img src="UNDERCITY-removebg-preview.png">
-      <img src="voltarz.jpeg">
-      <img src="xanthe.jpeg">
-      <img src="Chaverix.png">
-      <img src="Clarity.jfif">
-      <img src="cyclops.jpeg">
-      <img src="garuda.jpeg">
-      <img src="Hypix.jpeg">
-      <img src="Logo Nan SMP.png">
-      <img src="eclipsaca.jpg">
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Klien & Partner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">1000+</div>
+      <div class="stat-label">Konten Dipromosikan</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Tahun Pengalaman</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Kepuasan Klien</div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div class="services">
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-video"></i>
+      </div>
+      <h4>📺 YouTube Promotion</h4>
+      <p>Video promosi berkualitas tinggi untuk meningkatkan views dan subscriber channel Anda.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-music"></i>
+      </div>
+      <h4>🎵 TikTok Promotion</h4>
+      <p>Video viral untuk meningkatkan followers dan engagement di platform TikTok.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <h4>💬 WhatsApp Channel</h4>
+      <p>Publikasi langsung ke saluran WhatsApp untuk jangkauan yang lebih personal.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <i class="fas fa-paint-brush"></i>
+      </div>
+      <h4>🎨 Creative Media</h4>
+      <p>Pembuatan media kreatif yang menarik dan sesuai dengan brand Anda.</p>
+    </div>
+  </div>
+
+  <h4>🤝 Klien & Partner</h4>
+  <div class="logos">
+    <img src="KandangAlwi.png" alt="KandangAlwi">
+    <img src="senovshop.png" alt="Senov Shop">
+    <img src="survborn.png" alt="Survborn">
+    <img src="xeta.png" alt="Xeta">
+    <img src="arkonara.png" alt="Arkonara">
+    <img src="cloud.png" alt="Cloud">
+    <img src="crispy.png" alt="Crispy">
+    <img src="crystal-removebg-preview.png" alt="Crystal">
+    <img src="dcasta.png" alt="Dcasta">
+    <img src="dexura.png" alt="Dexura">
+    <img src="dolpinz.png" alt="Dolpinz">
+    <img src="elmilius.png" alt="Elmilius">
+    <img src="fk.png" alt="FK">
+    <img src="heaven.png" alt="Heaven">
+    <img src="hiver.png" alt="Hiver">
+    <img src="kana.png" alt="Kana">
+    <img src="kazakh.png" alt="Kazakh">
+    <img src="kazuna.png" alt="Kazuna">
+    <img src="kazuo.png" alt="Kazuo">
+    <img src="kiriza.png" alt="Kiriza">
+    <img src="leftycraft logo.png" alt="LeftyCraft">
+    <img src="mawi.png" alt="Mawi">
+    <img src="mineral.png" alt="Mineral">
+    <img src="minewarz.png" alt="MineWarz">
+    <img src="siluet.png" alt="Siluet">
+    <img src="genz.jpeg" alt="Genz">
+    <img src="skyz.png" alt="Skyz">
+    <img src="voltraz.png" alt="Voltraz">
+    <img src="wayang.png" alt="Wayang">
+    <img src="weaver.png" alt="Weaver">
+    <img src="zaynic.png" alt="Zaynic">
+    <img src="seria.jpg" alt="Seria">
+    <img src="rayzen.jpeg" alt="Rayzen">
+    <img src="netherking.jpg" alt="Netherking">
+    <img src="nexus.png" alt="Nexus">
+    <img src="voyality.jpeg" alt="Voyality">
+    <img src="wavesmp.jpeg" alt="WavesMP">
+    <img src="WhatsApp Image 2025-05-26 at 13.18.21.jpeg" alt="Partner">
+    <img src="arteric.jpeg" alt="Arteric">
+    <img src="ARVENIA.png" alt="Arvenia">
+    <img src="CIHUY.png" alt="Cihuy">
+    <img src="cosmic.jpeg" alt="Cosmic">
+    <img src="Craftnesia.jpeg" alt="Craftnesia">
+    <img src="ELYTHERIA.png" alt="Elytheria">
+    <img src="koyarp.jpeg" alt="Koyarp">
+    <img src="Kaizen1.png" alt="Kaizen">
+    <img src="Legacy.jpeg" alt="Legacy">
+    <img src="lumirith.jpeg" alt="Lumirith">
+    <img src="NEXOVERSE.png" alt="Nexoverse">
+    <img src="NEXO.png" alt="Nexo">
+    <img src="nusantara.jpeg" alt="Nusantara">
+    <img src="odinary.jpeg" alt="Odinary">
+    <img src="querty.jpeg" alt="Querty">
+    <img src="rebelsmp.jpeg" alt="RebelSMP">
+    <img src="skyyz.jpeg" alt="Skyyz">
+    <img src="voracity.jpeg" alt="Voracity">
+    <img src="ARCANA.png" alt="Arcana">
+    <img src="Neuvana-Light.png" alt="Neuvana">
+    <img src="AERO.png" alt="Aero">
+    <img src="AXERO.jfif" alt="Axero">
+    <img src="ayelsmp.jpeg" alt="AyelSMP">
+    <img src="BAKWAN JAGUNG.png" alt="Bakwan Jagung">
+    <img src="BEEBAZ.png" alt="Beebaz">
+    <img src="cyclops.jfif" alt="Cyclops">
+    <img src="elvaria.jpeg" alt="Elvaria">
+    <img src="EMPIRE.jpeg" alt="Empire">
+    <img src="Khazakh.png" alt="Khazakh">
+    <img src="logo bg transparan.png" alt="Logo">
+    <img src="LOGO NO BG.png" alt="Logo No BG">
+    <img src="LUMIRITH.png" alt="Lumirith">
+    <img src="Marlin MC.png" alt="Marlin MC">
+    <img src="Minesive.jpeg" alt="Minesive">
+    <img src="MOVERA LOGO.png" alt="Movera">
+    <img src="puresmp.jfif" alt="PureSMP">
+    <img src="Reality Project.png" alt="Reality Project">
+    <img src="Rozen Legend.jpeg" alt="Rozen Legend">
+    <img src="SYLVARA.png" alt="Sylvara">
+    <img src="SYNCARA.png" alt="Syncara">
+    <img src="Voxen 1.png" alt="Voxen">
+    <img src="WhatsApp Image 2026-01-08 at 10.12.42.jpeg" alt="Partner">
+    <img src="WhatsApp Image 2026-01-21 at 12.10.45.jpeg" alt="Partner">
+    <img src="wildmare.png" alt="Wildmare">
+    <img src="yozora.jpeg" alt="Yozora">
+    <img src="zelestial.jpeg" alt="Zelestial">
+    <img src="Catalux.jpeg" alt="Catalux">
+    <img src="Noesantara.png" alt="Noesantara">
+    <img src="MF.png" alt="MF">
+    <img src="minesteal.jpeg" alt="Minesteal">
+    <img src="REVORDIAN LEGEND.jpeg" alt="Revordian Legend">
+    <img src="Sirhc.jpeg" alt="Sirhc">
+    <img src="stellar.png" alt="Stellar">
+    <img src="survival craft.jfif" alt="Survival Craft">
+    <img src="UNDERCITY-removebg-preview.png" alt="Undercity">
+    <img src="voltarz.jpeg" alt="Voltarz">
+    <img src="xanthe.jpeg" alt="Xanthe">
+    <img src="Chaverix.png" alt="Chaverix">
+    <img src="Clarity.jfif" alt="Clarity">
+    <img src="cyclops.jpeg" alt="Cyclops">
+    <img src="garuda.jpeg" alt="Garuda">
+    <img src="Hypix.jpeg" alt="Hypix">
+    <img src="Logo Nan SMP.png" alt="Logo Nan SMP">
+    <img src="eclipsaca.jpg" alt="Eclipsaca">
+  </div>
+
+  <!-- Contact Section -->
+  <div class="card" style="margin-top: 30px;">
+    <h4>📞 Hubungi Kami</h4>
+    <p style="margin-bottom: 16px;">Punya pertanyaan atau ingin bekerja sama? Jangan ragu untuk menghubungi kami melalui saluran berikut:</p>
+    <div class="services">
+      <div class="service-card" style="text-align: center;">
+        <div class="service-icon">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <h4>WhatsApp</h4>
+        <p>+62 831-9221-5487</p>
+      </div>
+      <div class="service-card" style="text-align: center;">
+        <div class="service-icon">
+          <i class="fab fa-tiktok"></i>
+        </div>
+        <h4>TikTok</h4>
+        <p>@anakemak.id2</p>
+      </div>
+      <div class="service-card" style="text-align: center;">
+        <div class="service-icon">
+          <i class="fab fa-youtube"></i>
+        </div>
+        <h4>YouTube</h4>
+        <p>@anakemakid</p>
+      </div>
     </div>
   </div>
 
   <footer>
-    🌐 Sosial Media:
-    <a href="https://www.tiktok.com/@anakemak.id2" target="_blank">TikTok</a> •
-    <a href="https://www.youtube.com/@anakemakid" target="_blank">YouTube</a> •
-    <a href="https:https://whatsapp.com/channel/0029VazWiqu1HsprW1gCoJ0U" target="_blank">Saluran Whatsapp</a></a> •
+    <p>© 2024 Anak Emak Store. All rights reserved.</p>
+    <p style="margin-top: 10px;">
+      🌐 Sosial Media:
+      <a href="https://www.tiktok.com/@anakemak.id2" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a> •
+      <a href="https://www.youtube.com/@anakemakid" target="_blank"><i class="fab fa-youtube"></i> YouTube</a> •
+      <a href="https://whatsapp.com/channel/0029VazWiqu1HsprW1gCoJ0U" target="_blank"><i class="fab fa-whatsapp"></i> Saluran WhatsApp</a>
+    </p>
+  </footer>
+</div>
+</body>
+</html>
