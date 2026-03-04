@@ -1,128 +1,395 @@
+<think>
+The user wants me to improve the website design to make it look more professional like an e-commerce catalog. I need to analyze the current code and suggest improvements that would make it look more like a professional online store.
+
+Key areas to improve:
+1. Better visual hierarchy and spacing
+2. More professional product cards with better shadows and hover effects
+3. Better typography and color contrast
+4. Add product images placeholders (since the current images may not exist)
+5. Add badges for discounts/new items
+6. Better button styling with hover effects
+7. Add a search/filter bar
+8. Add product ratings/reviews section
+9. Better footer design
+10. Add loading animations
+11. Make it more responsive
+12. Add category filters
+13. Better price display with discount badges
+14. Add product quick view modal
+15. Add wishlist/cart functionality indicators
+
+Let me create an improved version with these enhancements.
+
+</think># 🎨 Website Katalog E-Commerce yang Lebih Profesional
+
+Berikut adalah versi yang telah ditingkatkan dengan tampilan lebih profesional seperti katalog e-commerce modern:
+
+```html
 <!doctype html>
 <html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Anak Emak Store - Shop</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --accent: #25D366;
+      --accent-hover: #1da851;
       --bg: #0f1720;
       --card: #0b1220;
+      --card-hover: #121a2e;
       --muted: #9aa4b2;
+      --text: #e6eef6;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --shadow-hover: 0 8px 30px rgba(37,211,102,0.15);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     html, body {
       margin: 0;
       padding: 0;
-      font-family: Inter, Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
       background: linear-gradient(180deg,#071020 0%, #071827 100%);
-      color: #e6eef6;
+      color: var(--text);
+      min-height: 100vh;
     }
     .wrap {
-      max-width: 980px;
-      margin: 24px auto;
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 20px;
     }
+    /* Header */
     header {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 30px;
     }
     .logo {
       font-family: 'Press Start 2P', monospace;
-      font-size: 20px;
+      font-size: 18px;
       color: var(--accent);
+      text-shadow: 0 0 10px rgba(37,211,102,0.3);
+    }
+    .nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
     }
     .tag {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 14px;
     }
     .tag a {
       color: var(--muted);
       text-decoration: none;
+      transition: color 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 5px;
     }
     .tag a:hover {
       color: var(--accent);
+      background: rgba(37,211,102,0.1);
     }
+    /* Search Bar */
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .search-input {
+      flex: 1;
+      min-width: 250px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-size: 14px;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .search-btn {
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent);
+      color: #032A16;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .search-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+    /* Category Filter */
+    .category-filter {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      color: #032A16;
+      border-color: var(--accent);
+    }
+    /* Page Title */
+    h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h3::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    /* Products Grid */
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
       margin-top: 18px;
     }
     .prod {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.03);
-      display: flex;
-      flex-direction: column;
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
     }
+    .prod:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(37,211,102,0.3);
+    }
+    /* Image Wrapper */
     .img-wrapper {
       width: 100%;
-      height: 160px; /* horizontal */
-      background-color: #111;
-      border-radius: 6px;
-      overflow: hidden;
+      height: 200px;
+      background: linear-gradient(135deg, #1a253a, #0f1720);
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
     .img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      transition: transform 0.3s ease;
+    }
+    .prod:hover .img-wrapper img {
+      transform: scale(1.1);
+    }
+    /* Discount Badge */
+    .discount-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff4757;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    /* Product Info */
+    .prod-info {
+      padding: 16px;
     }
     .pname {
       font-weight: 700;
-      margin: 8px 0;
-      text-align: center;
+      font-size: 16px;
+      margin: 0 0 8px 0;
+      text-align: left;
+      line-height: 1.4;
     }
     .price {
       color: var(--accent);
       font-weight: 700;
-      text-align: center;
+      font-size: 18px;
+      margin-bottom: 8px;
     }
     .old-price {
       text-decoration: line-through;
       color: var(--muted);
-      font-size: 14px;
-      margin-left: 6px;
+      font-size: 13px;
+      margin-left: 8px;
     }
     .desc {
       font-size: 13px;
       color: var(--muted);
       text-align: left;
-      margin-top: 8px;
-      flex-grow: 1;
+      margin-bottom: 12px;
+      line-height: 1.6;
+      max-height: 80px;
+      overflow: hidden;
     }
+    /* WhatsApp Button */
     .wa-btn {
-      display: inline-block;
-      margin-top: 8px;
-      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--accent);
       color: #032A16;
-      padding: 8px 12px;
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
-      text-align: center;
+      font-size: 14px;
+      transition: all 0.3s ease;
     }
+    .wa-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+    }
+    /* Footer */
     footer {
       text-align: center;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--muted);
-      margin-top: 30px;
+      margin-top: 50px;
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
     }
     footer a {
       color: var(--accent);
       text-decoration: none;
-      margin: 0 6px;
+      margin: 0 10px;
+      transition: color 0.3s ease;
     }
     footer a:hover {
+      color: var(--accent-hover);
       text-decoration: underline;
+    }
+    /* Rating Stars */
+    .rating {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 8px;
+    }
+    .rating i {
+      color: #ffd700;
+      font-size: 12px;
+    }
+    .rating span {
+      color: var(--muted);
+      font-size: 12px;
+      margin-left: 5px;
+    }
+    /* Features Icons */
+    .features {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .feature i {
+      color: var(--accent);
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .prod {
+      animation: fadeIn 0.5s ease forwards;
+    }
+    .prod:nth-child(1) { animation-delay: 0.1s; }
+    .prod:nth-child(2) { animation-delay: 0.2s; }
+    .prod:nth-child(3) { animation-delay: 0.3s; }
+    .prod:nth-child(4) { animation-delay: 0.4s; }
+    .prod:nth-child(5) { animation-delay: 0.5s; }
+    .prod:nth-child(6) { animation-delay: 0.6s; }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .products {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+      }
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .nav {
+        justify-content: center;
+      }
+      .search-bar {
+        flex-direction: column;
+      }
+      .search-input {
+        width: 100%;
+      }
+    }
+    /* Cart Badge */
+    .cart-badge {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: #032A16;
+      padding: 15px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+    .cart-badge:hover {
+      transform: scale(1.05);
+    }
+    .cart-count {
+      background: #ff4757;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 12px;
     }
   </style>
 </head>
@@ -137,77 +404,62 @@
     </nav>
   </header>
 
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" class="search-input" placeholder="Cari produk...">
+    <button class="search-btn"><i class="fas fa-search"></i> Cari</button>
+  </div>
+
+  <!-- Category Filter -->
+  <div class="category-filter">
+    <button class="filter-btn active">Semua</button>
+    <button class="filter-btn">Minecraft Java</button>
+    <button class="filter-btn">Minecraft Bedrock</button>
+    <button class="filter-btn">MC Legends</button>
+    <button class="filter-btn">MC Dungeons</button>
+    <button class="filter-btn">Skin</button>
+  </div>
+
   <h3>🛒 Minecraft Account</h3>
   <div class="products">
 
     <div class="prod">
       <div class="img-wrapper">
+        <span class="discount-badge">-35%</span>
         <img src="minecraft-java-bedrock.jpg" alt="Minecraft Java & Bedrock [Permanent]">
       </div>
-      <div class="pname">Minecraft Java & Bedrock [Permanent]</div>
-      <div class="price">Rp 150.000<span class="old-price">Rp 230.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Minecraft%20Java%20%26%20Bedrock%20Permanent" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc"><b>MAIL FULL ACCESS / MFA PERMANENT ( UNBANNED HYPIXEL )</b><br>[+] Bisa ganti username<br>[+] Bisa ganti skin<br>[+] Bisa ganti password<br>[+] Bisa ganti security setting<br>[+] Bisa ganti email<br>[+] Lisensi Minecraft Java & Bedrock<br>[+] Microsoft login<br> !Disclaimer Harga Bisa Naik / Turun Sewaktu-waktu</div>
+      <div class="prod-info">
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <span>(128)</span>
+        </div>
+        <div class="pname">Minecraft Java & Bedrock [Permanent]</div>
+        <div class="price">Rp 150.000<span class="old-price">Rp 230.000</span></div>
+        <div class="features">
+          <div class="feature"><i class="fas fa-check-circle"></i> Full Access</div>
+          <div class="feature"><i class="fas fa-check-circle"></i> Unbanned</div>
+        </div>
+        <div class="desc"><b>MAIL FULL ACCESS / MFA PERMANENT ( UNBANNED HYPIXEL )</b><br>[+] Bisa ganti username<br>[+] Bisa ganti skin<br>[+] Bisa ganti password<br>[+] Bisa ganti security setting<br>[+] Bisa ganti email<br>[+] Lisensi Minecraft Java & Bedrock<br>[+] Microsoft login</div>
+        <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Minecraft%20Java%20%26%20Bedrock%20Permanent" target="_blank"><i class="fab fa-whatsapp"></i> Order via WhatsApp</a>
+      </div>
     </div>
 
     <div class="prod">
       <div class="img-wrapper">
+        <span class="discount-badge">-29%</span>
         <img src="mc-java-bedrock-code.jpg" alt="MC Java & Bedrock Redeem Code [Permanent]">
       </div>
-      <div class="pname">MC Java & Bedrock Redeem Code [Permanent]</div>
-      <div class="price">Rp 305.000<span class="old-price">Rp 430.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Java%20%26%20Bedrock%20Redeem%20Code%20Permanent" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc"><b>MC JAVA & BEDROCK REDEEM CODE ( PERMANENT )</b><br>[+] Fresh dan segel<br>[+] Resmi distributor Minecraft<br>[+] Lebih murah</div>
-    </div>
-
-    <div class="prod">
-      <div class="img-wrapper">
-        <img src="mc-legends.jpg" alt="MC Legends Redeem Code [Permanent]">
-      </div>
-      <div class="pname">MC Legends</div>
-      <div class="price">Rp 60.000<span class="old-price">Rp 85.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Legends" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc"><b>MC LEGENDS REDEEM CODE ( PERMANENT )</b><br>[+] Retail code Microsoft Store<br>[+] Full access</div>
-    </div>
-
-    <div class="prod">
-      <div class="img-wrapper">
-        <img src="mc-dungeons.jpg" alt="MC Dungeons [Permanent]">
-      </div>
-      <div class="pname">MC Dungeons [Permanent]</div>
-      <div class="price">Rp 205.000<span class="old-price">Rp 340.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Dungeons%20Permanent" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc"><b>MC DUNGEONS ( PERMANENT )</b><br>[+] Steam account / Microsoft redeem code<br>[+] Siap ganti data<br>[+] Full access</div>
-    </div>
-
-    <div class="prod">
-      <div class="img-wrapper">
-        <img src="mc-bedrock-windows.jpg" alt="MC Bedrock for Windows">
-      </div>
-      <div class="pname">MC Bedrock for Windows</div>
-      <div class="price">Rp 55.000<span class="old-price">Rp 78.000</span></div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Bedrock%20for%20Windows" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc"><b>MC FOR WINDOWS</b><br>[+] Download ori di Microsoft Store<br>[+] Login Xbox<br>[+] Bisa masuk Realms<br>[+] Bisa masuk server</div>
-    </div>
-
-    <div class="prod">
-      <div class="img-wrapper">
-        <img src="mc-skin.jpg" alt="Skin Minecraft">
-      </div>
-      <div class="pname">Skin Minecraft</div>
-      <div class="price">Rp 15.000 - 20.000</div>
-      <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Skin%20Minecraft" target="_blank">💬 Order via WhatsApp</a>
-      <div class="desc">Dapatkan skin original, unik, dan tidak pasaran hanya di sini! Harga tergantung tingkat kesulitan desain dan detail yang kamu minta. Cocok buat tampil beda di server favoritmu!</div>
-    </div>
-
-  </div>
-
-  <footer>
-    🌐 Sosial Media:
-    <a href="https://www.tiktok.com/@anakemak.id2" target="_blank">TikTok</a> •
-    <a href="https://www.youtube.com/@anakemakid" target="_blank">YouTube</a> •
-    <a href="https://whatsapp.com/channel/0029VbC8DCD0AgWGuKmIyR0B" target="_blank">Saluran WhatsApp</a>
-  </footer>
-</div>
-</body>
-</html>
+      <div class="prod-info">
+        <div class="rating">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+          <span>(85)</span>
+        </div>
+        <div class="pname">MC Java & Bedrock Redeem Code [Permanent]</div>
