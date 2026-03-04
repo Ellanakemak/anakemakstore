@@ -421,7 +421,7 @@
     </div>
   </div>
 
-  <!-- Bundling -->
+    <!-- Bundling -->
   <div class="section-title"><i class="fas fa-gift"></i> Bundling Gacor</div>
   <div class="products">
     <div class="prod">
@@ -456,69 +456,6 @@
     </p>
   </footer>
 </div>
-
-<!-- Container untuk Notifikasi Pop-up -->
-<div id="notification-container"></div>
-
-<script>
-  // Data Produk untuk Notifikasi Acak
-  const products = [
-    { name: "YouTube Short [A] (Script Admin)", price: "Rp 90.000", img: "https://placehold.co/40x40/25D366/FFF?text=YT" },
-    { name: "YouTube Short [B] (Script Kreator)", price: "Rp 100.000", img: "https://placehold.co/40x40/25D366/FFF?text=YT" },
-    { name: "TikTok [A] (Script Admin)", price: "Rp 90.000", img: "https://placehold.co/40x40/000000/FFF?text=TT" },
-    { name: "TikTok [B] (Script Kreator)", price: "Rp 100.000", img: "https://placehold.co/40x40/000000/FFF?text=TT" },
-    { name: "WhatsApp Text + Gambar (Server)", price: "Rp 30.000", img: "https://placehold.co/40x40/25D366/FFF?text=WA" },
-    { name: "Bundling TikTok + YT Short A", price: "Rp 110.000", img: "https://placehold.co/40x40/25D366/FFF?text=Bundle" }
-  ];
-
-  // Nama-nama pembeli acak untuk kesan realistis
-  const names = ["Budi", "Siti", "Andi", "Rina", "Dimas", "Putri", "Fajar", "Lestari", "Hendra", "Dewi"];
-
-  function showNotification() {
-    const container = document.getElementById('notification-container');
-    
-    // Pilih produk acak
-    const randomProduct = products[Math.floor(Math.random() * products.length)];
-    const randomName = names[Math.floor(Math.random() * names.length)];
-    
-    // Waktu saat ini
-    const now = new Date();
-    const timeString = now.getHours() + ":" + String(now.getMinutes()).padStart(2, '0');
-
-    // Buat elemen notifikasi
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = `
-      <img src="${randomProduct.img}" alt="Product">
-      <div class="toast-content">
-        <div class="toast-title"><i class="fas fa-check-circle" style="color:var(--primary)"></i> ${randomName} baru saja membeli <b>${randomProduct.name}</b></div>
-        <div class="toast-time">${timeString} • ${randomProduct.price}</div>
-      </div>
-    `;
-
-    container.appendChild(toast);
-
-    // Hapus elemen setelah animasi selesai (4 detik)
-    setTimeout(() => {
-      toast.remove();
-    }, 4000);
-  }
-
-  // Jalankan notifikasi pertama kali setelah 3 detik
-  setTimeout(showNotification, 3000);
-
-  // Jalankan notifikasi setiap 30-60 detik secara acak
-  function scheduleNextNotification() {
-    const randomDelay = Math.floor(Math.random() * 30000) + 30000; // 30s - 60s
-    setTimeout(() => {
-      showNotification();
-      scheduleNextNotification();
-    }, randomDelay);
-  }
-
-  // Mulai loop notifikasi
-  scheduleNextNotification();
-</script>
 
 </body>
 </html>
