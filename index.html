@@ -1,18 +1,3 @@
-<think>
-The user is providing additional product information with new prices and discounts. They want me to continue the HTML code with these new products. Let me create a complete HTML file with all the products including the new ones they mentioned.
-
-I need to:
-1. Complete the HTML code from where it was cut off
-2. Add all the products with proper WhatsApp messages
-3. Include the new products they mentioned with updated prices
-4. Make sure the WhatsApp messages are customized for each product
-
-Let me create the full complete HTML file.
-</think># 🎨 Website Katalog E-Commerce - Versi Lengkap dengan Produk Baru
-
-Berikut adalah versi lengkap website dengan semua produk termasuk produk baru yang Anda berikan:
-
-```html
 <!doctype html>
 <html lang="id">
 <head>
@@ -27,389 +12,90 @@ Berikut adalah versi lengkap website dengan semua produk termasuk produk baru ya
       --accent-hover: #1da851;
       --bg: #0f1720;
       --card: #0b1220;
-      --card-hover: #121a2e;
       --muted: #9aa4b2;
       --text: #e6eef6;
       --border: rgba(255,255,255,0.08);
-      --shadow: 0 4px 20px rgba(0,0,0,0.3);
       --shadow-hover: 0 8px 30px rgba(37,211,102,0.15);
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', Arial, sans-serif;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
       background: linear-gradient(180deg,#071020 0%, #071827 100%);
       color: var(--text);
       min-height: 100vh;
     }
-    .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    /* Header */
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 30px;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 30px;
     }
-    .logo {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 18px;
-      color: var(--accent);
-      text-shadow: 0 0 10px rgba(37,211,102,0.3);
-    }
-    .nav {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .tag {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .tag a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.3s ease;
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
-    .tag a:hover {
-      color: var(--accent);
-      background: rgba(37,211,102,0.1);
-    }
-    /* Search Bar */
-    .search-bar {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
-    .search-input {
-      flex: 1;
-      min-width: 250px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      font-size: 14px;
-    }
-    .search-input:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-    .search-btn {
-      padding: 12px 24px;
-      border-radius: 10px;
-      border: none;
-      background: var(--accent);
-      color: #032A16;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .search-btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-    }
-    /* Category Filter */
-    .category-filter {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-    }
+    .logo { font-family: 'Press Start 2P', monospace; font-size: 18px; color: var(--accent); }
+    .nav a { color: var(--muted); text-decoration: none; margin-left: 15px; font-size: 14px; transition: 0.3s; }
+    .nav a:hover { color: var(--accent); }
+    
+    .category-filter { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
     .filter-btn {
-      padding: 8px 16px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--muted);
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border);
+      background: var(--card); color: var(--muted); cursor: pointer; text-decoration: none; font-size: 13px;
     }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--accent);
-      color: #032A16;
-      border-color: var(--accent);
-    }
-    /* Page Title */
-    h3 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    h3::before {
-      content: '';
-      width: 4px;
-      height: 24px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-    /* Products Grid */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 18px;
-    }
+    .filter-btn:hover { background: var(--accent); color: #032A16; }
+
+    .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
     .prod {
-      background: var(--card);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: all 0.3s ease;
-      position: relative;
+      background: var(--card); border-radius: 16px; border: 1px solid var(--border);
+      overflow: hidden; transition: 0.3s; position: relative;
     }
-    .prod:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(37,211,102,0.3);
-    }
-    /* Image Wrapper */
-    .img-wrapper {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #1a253a, #0f1720);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-    .prod:hover .img-wrapper img {
-      transform: scale(1.1);
-    }
-    /* Discount Badge */
+    .prod:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--accent); }
+    .img-wrapper { width: 100%; height: 200px; background: #1a253a; position: relative; }
+    .img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
     .discount-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #ff4757;
-      color: white;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
+      position: absolute; top: 10px; right: 10px; background: #ff4757;
+      color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 700;
     }
-    /* Product Info */
-    .prod-info {
-      padding: 16px;
-    }
-    .pname {
-      font-weight: 700;
-      font-size: 16px;
-      margin: 0 0 8px 0;
-      text-align: left;
-      line-height: 1.4;
-    }
-    .price {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-    .old-price {
-      text-decoration: line-through;
-      color: var(--muted);
-      font-size: 13px;
-      margin-left: 8px;
-    }
-    .desc {
-      font-size: 13px;
-      color: var(--muted);
-      text-align: left;
-      margin-bottom: 12px;
-      line-height: 1.6;
-      max-height: 80px;
-      overflow: hidden;
-    }
-    /* WhatsApp Button */
+    .prod-info { padding: 16px; }
+    .pname { font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+    .price { color: var(--accent); font-weight: 700; font-size: 18px; }
+    .old-price { text-decoration: line-through; color: var(--muted); font-size: 13px; margin-left: 8px; }
+    .desc { font-size: 13px; color: var(--muted); margin: 12px 0; line-height: 1.5; }
     .wa-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 12px 16px;
-      background: var(--accent);
-      color: #032A16;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
-    .wa-btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(37,211,102,0.3);
-    }
-    /* Footer */
-    footer {
-      text-align: center;
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 50px;
-      padding: 30px 0;
-      border-top: 1px solid var(--border);
-    }
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-      margin: 0 10px;
-      transition: color 0.3s ease;
-    }
-    footer a:hover {
-      color: var(--accent-hover);
-      text-decoration: underline;
-    }
-    /* Rating Stars */
-    .rating {
-      display: flex;
-      gap: 2px;
-      margin-bottom: 8px;
-    }
-    .rating i {
-      color: #ffd700;
-      font-size: 12px;
-    }
-    .rating span {
-      color: var(--muted);
-      font-size: 12px;
-      margin-left: 5px;
-    }
-    /* Features Icons */
-    .features {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-    .feature {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .feature i {
-      color: var(--accent);
-    }
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .prod {
-      animation: fadeIn 0.5s ease forwards;
-    }
-    .prod:nth-child(1) { animation-delay: 0.1s; }
-    .prod:nth-child(2) { animation-delay: 0.2s; }
-    .prod:nth-child(3) { animation-delay: 0.3s; }
-    .prod:nth-child(4) { animation-delay: 0.4s; }
-    .prod:nth-child(5) { animation-delay: 0.5s; }
-    .prod:nth-child(6) { animation-delay: 0.6s; }
-    /* Responsive */
-    @media (max-width: 768px) {
-      .products {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px;
-      }
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-      .nav {
-        justify-content: center;
-      }
-      .search-bar {
-        flex-direction: column;
-      }
-      .search-input {
-        width: 100%;
-      }
-    }
-    /* Cart Badge */
-    .cart-badge {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--accent);
-      color: #032A16;
-      padding: 15px 20px;
-      border-radius: 50px;
-      font-weight: 700;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s ease;
-    }
-    .cart-badge:hover {
-      transform: scale(1.05);
-    }
-    .cart-count {
-      background: #ff4757;
-      color: white;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 12px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px; background: var(--accent); color: #032A16;
+      border-radius: 10px; text-decoration: none; font-weight: 700;
     }
   </style>
 </head>
 <body>
+
 <div class="wrap">
   <header>
     <div class="logo">ANAK EMAK STORE</div>
-    <nav class="tag">
-      <a href="index.html">Minecraft Account</a> •
-      <a href="jasa-promosi.html">Jasa Promosi</a> •
-      <a href="about.html">About</a>
-    </nav>
+    <div class="nav">
+      <a href="https://anakemakstore.my.id/jasa-promosi">Jasa Promosi</a>
+      <a href="https://anakemak.my.id/about">About</a>
+    </div>
   </header>
 
-  <!-- Search Bar -->
-  <div class="search-bar">
-    <input type="text" class="search-input" placeholder="Cari produk...">
-    <button class="search-btn"><i class="fas fa-search"></i> Cari</button>
-  </div>
-
-  <!-- Category Filter -->
   <div class="category-filter">
-    <button class="filter-btn active">Semua</button>
-    <button class="filter-btn">Minecraft Java</button>
-    <button class="filter-btn">Minecraft Bedrock</button>
-    <button class="filter-btn">MC Legends</button>
-    <button class="filter-btn">MC Dungeons</button>
-    <button class="filter-btn">Skin</button>
+    <a href="#" class="filter-btn">Semua</a>
+    <a href="https://anakemakstore.my.id/jasa-promosi" class="filter-btn">Jasa Promosi</a>
+    <a href="https://anakemak.my.id/about" class="filter-btn">About</a>
   </div>
 
-  <h3>🛒 Minecraft Account</h3>
+  <h3>🛒 Katalog Produk</h3>
   <div class="products">
+
+    <div class="prod">
+      <div class="img-wrapper">
+        <span class="discount-badge">-27%</span>
+        <img src="mc-redeem.jpg" alt="MC Redeem Code">
+      </div>
+      <div class="prod-info">
+        <div class="pname">MC Java & Bedrock Redeem Code</div>
+        <div class="price">Rp 315.000 <span class="old-price">Rp 430.000</span></div>
+        <div class="desc"><b>MC JAVA & BEDROCK REDEEM CODE ( PERMANENT )</b><br>[+] Fresh dan segel<br>[+] Resmi distributor Minecraft<br>[+] Lebih murah<br>[+] Garansi 100%</div>
+        <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Redeem%20Code%20315k" target="_blank"><i class="fab fa-whatsapp"></i> Order WhatsApp</a>
+      </div>
+    </div>
 
     <div class="prod">
       <div class="img-wrapper">
@@ -417,82 +103,53 @@ Berikut adalah versi lengkap website dengan semua produk termasuk produk baru ya
         <img src="mc-bedrock.jpg" alt="Minecraft Bedrock">
       </div>
       <div class="prod-info">
-        <div class="rating">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <span>(189)</span>
-        </div>
-        <div class="pname">Minecraft Bedrock Edition</div>
-        <div class="price">Rp 40.000<span class="old-price">Rp 130.000</span></div>
-        <div class="desc">Dapatkan Minecraft Bedrock original dengan harga super miring! Stabil, lancar, dan bisa mabar lintas platform.</div>
-        <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Minecraft%20Bedrock%20Promo%2040k" target="_blank"><i class="fab fa-whatsapp"></i> Order via WhatsApp</a>
+        <div class="pname">Minecraft Bedrock</div>
+        <div class="price">Rp 40.000 <span class="old-price">Rp 130.000</span></div>
+        <div class="desc">Dapatkan Minecraft Bedrock original dengan akses penuh. Bisa bermain di Windows 10/11 dengan lancar.</div>
+        <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Minecraft%20Bedrock%2040k" target="_blank"><i class="fab fa-whatsapp"></i> Order WhatsApp</a>
       </div>
     </div>
 
     <div class="prod">
       <div class="img-wrapper">
         <span class="discount-badge">-62%</span>
-        <img src="mc-legends.jpg" alt="Minecraft Legends">
+        <img src="mc-legends.jpg" alt="MC Legends">
       </div>
       <div class="prod-info">
-        <div class="rating">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          <span>(94)</span>
-        </div>
         <div class="pname">Minecraft Legends</div>
-        <div class="price">Rp 55.000<span class="old-price">Rp 145.000</span></div>
-        <div class="desc">Jelajahi strategi baru di dunia Minecraft. Pertahankan Overworld dari invasi Piglin dengan harga promo!</div>
-        <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Legends%20Promo%2055k" target="_blank"><i class="fab fa-whatsapp"></i> Order via WhatsApp</a>
+        <div class="price">Rp 55.000 <span class="old-price">Rp 145.000</span></div>
+        <div class="desc">Jelajahi misteri Minecraft Legends, permainan strategi aksi baru. Pimpin pasukanmu untuk menyelamatkan Overworld.</div>
+        <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Legends%2055k" target="_blank"><i class="fab fa-whatsapp"></i> Order WhatsApp</a>
       </div>
     </div>
 
     <div class="prod">
       <div class="img-wrapper">
         <span class="discount-badge">-61%</span>
-        <img src="mc-dungeons.jpg" alt="Minecraft Dungeons">
+        <img src="mc-dungeons.jpg" alt="MC Dungeons">
       </div>
       <div class="prod-info">
-        <div class="rating">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          <span>(112)</span>
-        </div>
         <div class="pname">Minecraft Dungeons</div>
-        <div class="price">Rp 50.000<span class="old-price">Rp 130.000</span></div>
-        <div class="desc">Action-adventure RPG ala Minecraft! Lawan gerombolan monster di dungeon yang menantang.</div>
-        <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Dungeons%20Promo%2050k" target="_blank"><i class="fab fa-whatsapp"></i> Order via WhatsApp</a>
+        <div class="price">Rp 50.000 <span class="old-price">Rp 130.000</span></div>
+        <div class="desc">Lawan monster di game action-adventure yang terinspirasi oleh dungeon crawler klasik di dunia Minecraft.</div>
+        <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Dungeons%2050k" target="_blank"><i class="fab fa-whatsapp"></i> Order WhatsApp</a>
       </div>
     </div>
 
     <div class="prod">
       <div class="img-wrapper">
-        <img src="mc-skins.jpg" alt="Custom Minecraft Skins">
+        <img src="mc-skin.jpg" alt="Minecraft Skin">
       </div>
       <div class="prod-info">
-        <div class="rating">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <span>(310)</span>
-        </div>
-        <div class="pname">Custom Minecraft Skins</div>
+        <div class="pname">Minecraft Skin Custom</div>
         <div class="price">Mulai Rp 15.000</div>
-        <div class="desc">Tampil beda di server favoritmu! Jasa pembuatan skin custom atau koleksi skin premium berkualitas tinggi.</div>
-        <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20tanya%20tentang%20Custom%20Skin%20Minecraft" target="_blank"><i class="fab fa-whatsapp"></i> Chat Seller</a>
+        <div class="desc">Tingkatkan penampilan karaktermu dengan skin custom berkualitas tinggi. Tersedia berbagai pilihan tema keren.</div>
+        <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20tanya%20order%20Skin%20Minecraft" target="_blank"><i class="fab fa-whatsapp"></i> Chat Admin</a>
       </div>
     </div>
 
-  </div> <footer>
-    <p>&copy; 2026 Anak Emak Store. All rights reserved.</p>
-    <div style="margin-top: 10px;">
-      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="#"><i class="fab fa-discord"></i> Discord</a>
-    </div>
-  </footer>
-</div>
-
-<div class="cart-badge">
-  <i class="fas fa-shopping-cart"></i>
-  <span>Keranjang</span>
-  <span class="cart-count">0</span>
+  </div>
 </div>
 
 </body>
 </html>
-       
