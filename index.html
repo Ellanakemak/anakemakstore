@@ -33,10 +33,47 @@
 
     .wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
+    /* RUNNING TEXT */
+    .payment-banner {
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+      color: #021a0d;
+      padding: 8px 0;
+      font-size: 13px;
+      font-weight: 600;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .payment-track {
+      display: inline-block;
+      animation: scroll 20s linear infinite;
+    }
+    .payment-track:hover {
+      animation-play-state: paused;
+    }
+    .payment-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 20px;
+    }
+    .payment-item i {
+      font-size: 14px;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
     /* HEADER */
     header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 25px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      padding: 25px 0; 
+      border-bottom: 1px solid var(--border); 
+      margin-bottom: 40px;
     }
     .logo { 
       font-family: 'Press Start 2P', monospace; 
@@ -194,11 +231,34 @@
       to { opacity: 0; transform: translateY(-10px); }
     }
 
+    /* Responsive */
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 15px; text-align: center; }
+      .products { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
 <div class="wrap">
+  <!-- RUNNING TEXT PAYMENT -->
+  <div class="payment-banner">
+    <div class="payment-track">
+      <span class="payment-item"><i class="fas fa-wallet"></i> DANA</span>
+      <span class="payment-item"><i class="fas fa-wallet"></i> OVO</span>
+      <span class="payment-item"><i class="fas fa-wallet"></i> GOPAY</span>
+      <span class="payment-item"><i class="fas fa-qrcode"></i> QRIS</span>
+      <span class="payment-item"><i class="fas fa-money-bill-wave"></i> DUITKU</span>
+      <span class="payment-item"><i class="fas fa-university"></i> BANK TRANSFER</span>
+      <span class="payment-item"><i class="fas fa-wallet"></i> DANA</span>
+      <span class="payment-item"><i class="fas fa-wallet"></i> OVO</span>
+      <span class="payment-item"><i class="fas fa-wallet"></i> GOPAY</span>
+      <span class="payment-item"><i class="fas fa-qrcode"></i> QRIS</span>
+      <span class="payment-item"><i class="fas fa-money-bill-wave"></i> DUITKU</span>
+      <span class="payment-item"><i class="fas fa-university"></i> BANK TRANSFER</span>
+    </div>
+  </div>
+
   <header>
     <div class="logo">ANAK EMAK STORE</div>
     <div class="nav">
