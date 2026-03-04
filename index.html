@@ -1,39 +1,3 @@
-<think>
-The user wants to upgrade an existing HTML/CSS shop page to look more professional.
-Key requirements:
-1.  **Professional Look:** Improve the UI/UX, likely adding a "Social Proof" element (stars, sales count).
-2.  **Social Proof:** Add "Sold" counters and star ratings to products.
-3.  **Notification Pop-up:** Implement a script that shows a "Someone just bought [Product]" notification every few minutes.
-
-**Plan:**
-1.  **Refine CSS:**
-    *   Add a star rating system (using FontAwesome).
-    *   Add a "Sold" badge or text under the product name.
-    *   Improve the layout (spacing, typography, shadows).
-    *   Make the "Order" button more prominent.
-2.  **Add JavaScript for Pop-ups:**
-    *   Create a function to generate a random product from the list.
-    *   Create a function to show a toast notification (bottom right or top right).
-    *   Set an interval to trigger this every 30-60 seconds.
-3.  **Refine HTML Structure:**
-    *   Add the star icons and sold counts to the product cards.
-    *   Add a container for the notifications.
-
-**Drafting the Code:**
-*   *Stars:* `fa-star` (gold color).
-*   *Sold:* "Terjual 1.2k" or similar.
-*   *Pop-up:* A fixed `div` that slides in from the right, fades out after 3 seconds.
-
-Let's assemble the solution.
-</think>Berikut adalah versi yang sudah ditingkatkan. Saya telah melakukan beberapa perubahan besar agar terlihat lebih profesional dan "menjual":
-
-1.  **Desain UI/UX yang Lebih Bersih:** Menambahkan bayangan (shadow) yang lebih halus, border radius yang konsisten, dan tipografi yang lebih enak dibaca.
-2.  **Social Proof (Bukti Sosial):** Menambahkan **Rating Bintang** dan **Jumlah Terjual** di setiap produk untuk meningkatkan kepercayaan pembeli.
-3.  **Notifikasi Pop-up Otomatis:** Saya menambahkan JavaScript yang akan memunculkan notifikasi "Baru saja dibeli" di pojok kanan bawah secara acak setiap beberapa menit.
-
-Silakan salin kode di bawah ini:
-
-```html
 <!doctype html>
 <html lang="id">
 <head>
