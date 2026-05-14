@@ -7,6 +7,33 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* MODAL POPUP */
+.modal {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9); z-index: 10000; backdrop-filter: blur(10px);
+  animation: fadeIn 0.3s ease;
+}
+.modal-content {
+  background: var(--card-bg); margin: 5% auto; padding: 40px; border-radius: 20px;
+  max-width: 500px; max-height: 80vh; overflow-y: auto; border: 1px solid var(--border);
+  position: relative; box-shadow: 0 25px 70px rgba(0,0,0,0.6);
+  transform: scale(0.9); animation: modalSlide 0.4s ease forwards;
+}
+@keyframes modalSlide {
+  to { transform: scale(1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.close-btn {
+  position: absolute; top: 15px; right: 20px; font-size: 28px; color: var(--text-muted);
+  cursor: pointer; transition: all 0.3s; width: 35px; height: 35px; display: flex;
+  align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.05);
+}
+.close-btn:hover { 
+  color: var(--primary); background: rgba(37,211,102,0.2); transform: rotate(90deg); 
+}
     :root {
       --primary: #25D366;
       --primary-dark: #1da851;
@@ -261,10 +288,11 @@
 
   <header>
     <div class="logo">ANAK EMAK STORE</div>
-    <div class="nav">
-      <a href="https://anakemakstore.my.id/jasa-promosi">Jasa Promosi</a>
-      <a href="https://anakemakstore.my.id/about">About</a>
-    </div>
+    <div class="category-filter">
+  <a href="#" class="filter-btn active">Semua Produk</a>
+  <a href="#" class="filter-btn" onclick="openPromosi()">Jasa Promosi</a>
+  <a href="#" class="filter-btn" onclick="openAbout()">Tentang Kami</a>
+</div>
   </header>
 
   <div class="category-filter">
@@ -491,7 +519,91 @@
 
   // Mulai loop notifikasi
   scheduleNextNotification();
-</script>
+  // MODAL FUNCTIONS
+function openPromosi() { document.getElementById('promosiModal').style.display = 'block'; }
+function openAbout() { document.getElementById('aboutModal').style.display = 'block'; }
+function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; }
 
+// Tutup modal dengan ESC atau klik luar
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.style.display = 'none';
+    });
+  }
+});
+window.onclick = function(event) {
+  if (event.target.classList.contains('modal')) {
+    event.target.style.display = 'none';
+  }
+};
+</script>
+<!-- MODAL JASA PROMOSI -->
+<div id="promosiModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('promosiModal')">&times;</span>
+    <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 1.8em;">
+      🚀 Jasa Promosi Profesional
+    </h2>
+    <div style="margin-bottom: 30px; line-height: 1.7;">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding: 12px; background: rgba(37,211,102,0.1); border-radius: 10px; border-left: 4px solid var(--primary);">
+        <i class="fas fa-check-circle" style="color: var(--primary); font-size: 20px;"></i>
+        <div>
+          <strong>TikTok Views & Likes</strong><br>
+          <span style="font-size: 13px; color: var(--text-muted);">Mulai Rp 5.000</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding: 12px; background: rgba(37,211,102,0.1); border-radius: 10px; border-left: 4px solid var(--primary);">
+        <i class="fas fa-check-circle" style="color: var(--primary); font-size: 20px;"></i>
+        <div>
+          <strong>Instagram Followers Real</strong><br>
+          <span style="font-size: 13px; color: var(--text-muted);">Mulai Rp 15.000</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 12px; background: rgba(37,211,102,0.1); border-radius: 10px; border-left: 4px solid var(--primary);">
+        <i class="fas fa-check-circle" style="color: var(--primary); font-size: 20px;"></i>
+        <div>
+          <strong>YouTube Subscribers</strong><br>
+          <span style="font-size: 13px; color: var(--text-muted);">Mulai Rp 25.000</span>
+        </div>
+      </div>
+    </div>
+    <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20order%20Jasa%20Promosi%20TikTok/IG/YT" style="width:100%; font-size: 16px;" target="_blank">
+      <i class="fab fa-whatsapp"></i> Order Sekarang
+    </a>
+  </div>
+</div>
+
+<!-- MODAL ABOUT -->
+<div id="aboutModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
+    <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 1.8em;">
+      👋 Tentang Anak Emak Store
+    </h2>
+    <div style="line-height: 1.7; margin-bottom: 30px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px; font-size: 15px;">
+        <i class="fas fa-crown" style="color: var(--gold); font-size: 20px;"></i>
+        <strong>10.000+ Pelanggan Puas</strong>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px; font-size: 15px;">
+        <i class="fas fa-shield-alt" style="color: var(--primary); font-size: 20px;"></i>
+        <strong>Garansi Lifetime 100%</strong>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 18px; font-size: 15px;">
+        <i class="fas fa-clock" style="color: #fbbf24; font-size: 20px;"></i>
+        <strong>Proses Instan 24/7</strong>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 15px;">
+        <i class="fas fa-wallet" style="color: var(--primary); font-size: 20px;"></i>
+        <strong>Pembayaran Aman (DANA/OVO/GOPAY/Bank)</strong>
+      </div>
+    </div>
+    <a class="wa-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20tanya%20tentang%20toko" style="width:100%; font-size: 16px;" target="_blank">
+      <i class="fab fa-whatsapp"></i> Chat Admin
+    </a>
+  </div>
+</div>
 </body>
+  
 </html>
