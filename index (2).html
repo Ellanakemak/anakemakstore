@@ -1,0 +1,1710 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Anak Emak Store — Minecraft Account & Jasa Promosi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --green: #00e676;
+      --green-dim: #00c853;
+      --green-glow: rgba(0,230,118,0.15);
+      --bg: #080c10;
+      --surface: #0d1318;
+      --surface-2: #111920;
+      --surface-3: #162030;
+      --border: rgba(255,255,255,0.06);
+      --border-green: rgba(0,230,118,0.2);
+      --text: #eef2f6;
+      --text-muted: #6b8899;
+      --text-mid: #9db8c8;
+      --gold: #f0b429;
+      --red: #ff4f4f;
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NOISE TEXTURE OVERLAY */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    /* AMBIENT GLOW */
+    .ambient {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ambient-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,230,118,0.04) 0%, transparent 70%);
+      top: -200px; right: -200px;
+    }
+    .ambient-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,150,255,0.03) 0%, transparent 70%);
+      bottom: 0; left: -150px;
+    }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ——— TICKER ——— */
+    .ticker {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-track {
+      display: inline-block;
+      animation: ticker-scroll 30s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 28px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-mid);
+      letter-spacing: 0.3px;
+    }
+    .ticker-item i { color: var(--green); font-size: 11px; }
+    .ticker-sep { color: var(--border); margin: 0 4px; }
+    @keyframes ticker-scroll {
+      from { transform: translateX(100vw); }
+      to   { transform: translateX(-100%); }
+    }
+
+    /* ——— NAV ——— */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.2px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--green);
+      animation: pulse-dot 2s ease infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.8); }
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-link {
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      text-decoration: none;
+      letter-spacing: 0;
+    }
+    .nav-link:hover {
+      color: var(--text);
+      background: var(--surface-2);
+      border-color: var(--border);
+    }
+    .nav-link.active {
+      color: var(--green);
+      background: var(--green-glow);
+      border-color: var(--border-green);
+    }
+
+    /* ——— HERO ——— */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-glow);
+      border: 1px solid var(--border-green);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(34px, 6vw, 62px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+    .hero-title span {
+      color: var(--green);
+      position: relative;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-mid);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-top: 48px;
+    }
+    .hero-stat {
+      padding: 0 32px;
+      text-align: center;
+    }
+    .hero-stat + .hero-stat {
+      border-left: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -1px;
+    }
+    .hero-stat-num span { color: var(--green); }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+
+    /* ——— SECTIONS ——— */
+    section { display: none; }
+    section.active { display: block; }
+
+    /* ——— SECTION HEADER ——— */
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      padding-top: 20px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    /* ——— PRODUCT GRID ——— */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .prod {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .prod:hover {
+      border-color: var(--border-green);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--border-green);
+    }
+
+    .img-wrapper {
+      width: 100%;
+      height: 210px;
+      overflow: hidden;
+      position: relative;
+      background: var(--surface-2);
+    }
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      filter: brightness(0.9);
+    }
+    .prod:hover .img-wrapper img { transform: scale(1.06); filter: brightness(1); }
+
+    .img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,19,24,0.6) 0%, transparent 50%);
+    }
+
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--red);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .badge-hot {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      color: var(--gold);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid rgba(240,180,41,0.2);
+    }
+
+    .prod-body {
+      padding: 22px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .stars { color: var(--gold); font-size: 11px; }
+    .rating-score { font-size: 12px; color: var(--text-muted); }
+
+    .prod-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text);
+    }
+
+    .sold-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .sold-badge i { color: var(--green); font-size: 11px; }
+
+    .prod-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      padding: 14px;
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+    .prod-desc strong { color: var(--text-mid); }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.5px;
+    }
+    .old-price {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 14px 20px;
+      background: var(--green);
+      color: #030f07;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .cta-btn:hover {
+      background: #00f080;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,230,118,0.3);
+    }
+    .cta-btn.secondary {
+      background: var(--surface-3);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .cta-btn.secondary:hover {
+      background: var(--surface-2);
+      border-color: var(--border-green);
+      color: var(--green);
+      box-shadow: none;
+    }
+
+    /* ——— PROMO SECTION ——— */
+    .promo-category {
+      margin-bottom: 36px;
+    }
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .category-icon {
+      width: 38px; height: 38px;
+      background: var(--green-glow);
+      border: 1px solid var(--border-green);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--green);
+    }
+    .category-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .promo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .promo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.25s ease;
+    }
+    .promo-card:hover {
+      border-color: var(--border-green);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+    .promo-card.featured {
+      border-color: rgba(240,180,41,0.2);
+      background: linear-gradient(135deg, var(--surface) 0%, rgba(240,180,41,0.04) 100%);
+    }
+    .promo-card.featured:hover {
+      border-color: rgba(240,180,41,0.4);
+    }
+
+    .promo-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .promo-detail {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .promo-detail b { color: var(--text-mid); }
+
+    .promo-price {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .promo-price .price {
+      font-size: 20px;
+    }
+    .promo-price .old-price { font-size: 12px; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tag-green { background: var(--green-glow); color: var(--green); border: 1px solid var(--border-green); }
+    .tag-gold { background: rgba(240,180,41,0.1); color: var(--gold); border: 1px solid rgba(240,180,41,0.2); }
+
+    /* ——— ABOUT ——— */
+    .about-hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .about-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+    .about-text {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.85;
+      max-width: 680px;
+      font-weight: 400;
+    }
+    .about-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .about-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .about-pill i { color: var(--green); font-size: 12px; }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      transition: all 0.25s ease;
+    }
+    .stat-card:hover {
+      border-color: var(--border-green);
+      transform: translateY(-4px);
+    }
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-lbl { font-size: 13px; color: var(--text-muted); }
+
+    /* PARTNERS */
+    .partners-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .partners-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .partners-count {
+      padding: 3px 12px;
+      background: var(--green-glow);
+      border: 1px solid var(--border-green);
+      border-radius: 100px;
+      font-size: 12px;
+      color: var(--green);
+      font-weight: 600;
+    }
+    .logos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .logos-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      filter: grayscale(1) opacity(0.5);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .logos-grid img:hover {
+      filter: grayscale(0) opacity(1);
+      border-color: var(--border-green);
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px 24px;
+      text-align: center;
+      transition: all 0.25s ease;
+    }
+    .contact-card:hover {
+      border-color: var(--border-green);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+    }
+    .contact-icon {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin: 0 auto 18px;
+    }
+    .contact-icon.wa  { background: rgba(37,211,102,0.12); color: #25D366; border: 1px solid rgba(37,211,102,0.2); }
+    .contact-icon.tt  { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid var(--border); }
+    .contact-icon.yt  { background: rgba(255,0,0,0.1); color: #ff4444; border: 1px solid rgba(255,0,0,0.15); }
+    .contact-name { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+    .contact-handle { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+
+    .cta-wa   { background: #25D366; color: #030f07; }
+    .cta-wa:hover { background: #2de870; box-shadow: 0 8px 24px rgba(37,211,102,0.3); }
+    .cta-tt   { background: #111; color: #fff; border: 1px solid var(--border); }
+    .cta-tt:hover { background: #1a1a1a; box-shadow: none; transform: none; }
+    .cta-yt   { background: #FF0000; color: #fff; }
+    .cta-yt:hover { background: #cc0000; box-shadow: 0 8px 24px rgba(255,0,0,0.25); }
+
+    /* ——— TESTIMONIALS ——— */
+    .testi-section {
+      margin: 56px 0 0;
+      overflow: hidden;
+    }
+    .testi-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .testi-track-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .testi-track-wrap::before,
+    .testi-track-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .testi-track-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg), transparent);
+    }
+    .testi-track-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg), transparent);
+    }
+    .testi-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: testi-scroll 45s linear infinite;
+    }
+    .testi-track:hover { animation-play-state: paused; }
+    .testi-track.reverse {
+      animation: testi-scroll-rev 45s linear infinite;
+    }
+    @keyframes testi-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes testi-scroll-rev {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
+    }
+
+    .testi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      width: 300px;
+      flex-shrink: 0;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .testi-card:hover {
+      border-color: var(--border-green);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+      transform: translateY(-3px);
+    }
+    .testi-top {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+    .testi-avatar-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .testi-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--surface-3);
+      border: 2px solid var(--border-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--green);
+      overflow: hidden;
+    }
+    .testi-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .testi-platform-badge {
+      position: absolute;
+      bottom: -3px; right: -3px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1.5px solid var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+    }
+    .testi-platform-badge.wa { color: #25D366; }
+    .testi-platform-badge.tg { color: #2AABEE; }
+    .testi-platform-badge.ig { color: #E1306C; }
+    .testi-meta { flex: 1; min-width: 0; }
+    .testi-name {
+      font-weight: 600;
+      font-size: 13.5px;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .testi-product {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .testi-stars {
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+
+    /* Screenshot preview */
+    .testi-screenshot {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      position: relative;
+      cursor: zoom-in;
+    }
+    .testi-screenshot img {
+      width: 100%;
+      display: block;
+      max-height: 180px;
+      object-fit: cover;
+      object-position: top;
+      transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .testi-screenshot:hover img {
+      max-height: 360px;
+    }
+    .testi-screenshot-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(8,12,16,0.9), transparent);
+      padding: 22px 10px 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: opacity 0.3s;
+    }
+    .testi-screenshot:hover .testi-screenshot-label { opacity: 0; }
+    .testi-screenshot-label i { color: var(--green); font-size: 10px; }
+
+    /* Fallback text quote */
+    .testi-text {
+      font-size: 13.5px;
+      color: var(--text-mid);
+      line-height: 1.7;
+      padding: 12px 14px;
+      background: var(--surface-2);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .testi-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .testi-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--green);
+      font-weight: 500;
+    }
+    .testi-verified i { font-size: 10px; }
+    .testi-date {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ——— TOAST ——— */
+    #toasts {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .toast {
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 300px;
+      max-width: 340px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+      animation: toast-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+                 toast-out 0.4s ease 3.6s forwards;
+      pointer-events: all;
+    }
+    .toast-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--green-glow);
+      border: 1px solid var(--border-green);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--green);
+    }
+    .toast-main { flex: 1; }
+    .toast-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .toast-info { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    @keyframes toast-in {
+      from { transform: translateX(120%); opacity: 0; }
+      to   { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes toast-out {
+      to { transform: translateX(120%); opacity: 0; }
+    }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 40px 0;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-inner { flex-direction: column; gap: 14px; padding: 14px 0; }
+      .hero { padding: 50px 0 40px; }
+      .hero-stats { gap: 0; flex-wrap: wrap; }
+      .hero-stat { flex: 1 1 40%; border: none; border-top: 1px solid var(--border); padding: 16px; }
+      .products { grid-template-columns: 1fr; }
+      .about-hero { padding: 28px; }
+      .about-hero::before { display: none; }
+      .logos-grid { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ambient ambient-1"></div>
+<div class="ambient ambient-2"></div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><i class="fas fa-circle"></i> DANA</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> OVO</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> GOPAY</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> QRIS</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> DUITKU</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> BANK TRANSFER</span>
+    <span class="ticker-item"><i class="fas fa-shield-alt"></i> TRANSAKSI AMAN & TERPERCAYA</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> DANA</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> OVO</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> GOPAY</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> QRIS</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> DUITKU</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i> BANK TRANSFER</span>
+    <span class="ticker-item"><i class="fas fa-shield-alt"></i> TRANSAKSI AMAN & TERPERCAYA</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-dot"></div>
+        ANAK EMAK STORE
+      </div>
+      <div class="nav-links">
+        <a class="nav-link active" data-tab="minecraft" href="#">Minecraft Account</a>
+        <a class="nav-link" data-tab="promo" href="#">Jasa Promosi</a>
+        <a class="nav-link" data-tab="about" href="#">Tentang Kami</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ═══ MINECRAFT ═══ -->
+  <section id="minecraft" class="active">
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-eyebrow"><i class="fas fa-bolt"></i> Flash Sale Aktif</div>
+      <h1 class="hero-title">Akun Minecraft<br><span>Terpercaya & Murah</span></h1>
+      <p class="hero-sub">Permanent account, redeem code resmi, & lisensi Bedrock dengan garansi seumur hidup. Proses instan, harga terbaik.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">5rb<span>+</span></div>
+          <div class="hero-stat-label">Akun Terjual</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100<span>%</span></div>
+          <div class="hero-stat-label">Garansi Aktif</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">24<span>/7</span></div>
+          <div class="hero-stat-label">Layanan CS</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4.9<span>★</span></div>
+          <div class="hero-stat-label">Rating Rata-rata</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div>
+        <div class="section-label">Produk Unggulan</div>
+        <div class="section-title">Pilih Akun Kamu</div>
+      </div>
+      <span class="tag tag-green"><i class="fas fa-fire"></i> Stok Terbatas</span>
+    </div>
+
+    <div class="products">
+      <!-- Card 1 -->
+      <div class="prod">
+        <div class="img-wrapper">
+          <img src="minecraft-java-bedrock.jpg" alt="MC Java Bedrock" onerror="this.src='https://placehold.co/600x400/0d1318/00e676?text=Java+%2B+Bedrock'">
+          <div class="img-overlay"></div>
+          <span class="badge">-37%</span>
+          <span class="badge-hot">🔥 Terlaris</span>
+        </div>
+        <div class="prod-body">
+          <div class="rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-score">4.9 · 1.2rb+ ulasan</span>
+          </div>
+          <div class="prod-name">MC Java & Bedrock Account</div>
+          <div class="sold-badge"><i class="fas fa-check-circle"></i> Terjual 1.200+ unit</div>
+          <div class="prod-desc">
+            <strong>PERMANENT ACCOUNT</strong><br>
+            Bisa change nickname, private account. Garansi seumur hidup.
+          </div>
+          <div class="price-row">
+            <span class="price">Rp 150.000</span>
+            <span class="old-price">Rp 240.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Java%20Bedrock%20150k" target="_blank">
+            <i class="fab fa-whatsapp"></i> Beli Sekarang
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="prod">
+        <div class="img-wrapper">
+          <img src="mc-java-bedrock-code.jpg" alt="MC Redeem Code" onerror="this.src='https://placehold.co/600x400/0d1318/00e676?text=Redeem+Code'">
+          <div class="img-overlay"></div>
+          <span class="badge">-27%</span>
+        </div>
+        <div class="prod-body">
+          <div class="rating">
+            <span class="stars">★★★★½</span>
+            <span class="rating-score">4.8 · 850+ ulasan</span>
+          </div>
+          <div class="prod-name">MC Java & Bedrock Redeem Code</div>
+          <div class="sold-badge"><i class="fas fa-check-circle"></i> Terjual 850+ unit</div>
+          <div class="prod-desc">
+            <strong>REDEEM CODE OFFICIAL</strong><br>
+            Fresh & segel resmi distributor. Garansi 100% aktif.
+          </div>
+          <div class="price-row">
+            <span class="price">Rp 315.000</span>
+            <span class="old-price">Rp 430.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20MC%20Redeem%20Code%20315k" target="_blank">
+            <i class="fab fa-whatsapp"></i> Beli Sekarang
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="prod">
+        <div class="img-wrapper">
+          <img src="mc-bedrock-windows.jpg" alt="Minecraft Bedrock Windows" onerror="this.src='https://placehold.co/600x400/0d1318/00e676?text=Bedrock+Windows'">
+          <div class="img-overlay"></div>
+          <span class="badge">-69%</span>
+          <span class="badge-hot">⚡ Best Value</span>
+        </div>
+        <div class="prod-body">
+          <div class="rating">
+            <span class="stars">★★★★★</span>
+            <span class="rating-score">5.0 · 3.4rb+ ulasan</span>
+          </div>
+          <div class="prod-name">Minecraft Bedrock Windows</div>
+          <div class="sold-badge"><i class="fas fa-check-circle"></i> Terjual 3.400+ unit</div>
+          <div class="prod-desc">
+            Akses penuh Windows 10/11. Bisa bermain lancar.
+          </div>
+          <div class="price-row">
+            <span class="price">Rp 40.000</span>
+            <span class="old-price">Rp 130.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Minecraft%20Bedrock%2040k" target="_blank">
+            <i class="fab fa-whatsapp"></i> Beli Sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="testi-section">
+      <div class="testi-header">
+        <div>
+          <div class="section-label">Apa Kata Mereka</div>
+          <div class="section-title">Testimoni Pembeli</div>
+        </div>
+        <span class="tag tag-green"><i class="fas fa-shield-alt"></i> Verified Buyer</span>
+      </div>
+
+      <!-- Row 1 -->
+      <div class="testi-track-wrap">
+        <div class="testi-track" id="trow1"></div>
+      </div>
+      <!-- Row 2 -->
+      <div class="testi-track-wrap" style="margin-top:0">
+        <div class="testi-track reverse" id="trow2"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══ PROMO ═══ -->
+  <section id="promo">
+    <div class="hero" style="padding-bottom: 40px;">
+      <div class="hero-eyebrow"><i class="fas fa-bullhorn"></i> Jasa Kreator Konten</div>
+      <h1 class="hero-title">Promosi <span>Server Minecraft</span><br>Kamu</h1>
+      <p class="hero-sub">Konten 4K 60FPS berkualitas tinggi untuk YouTube Shorts & TikTok. Tingkatkan player count servermu bersama kami.</p>
+    </div>
+
+    <!-- YouTube Shorts -->
+    <div class="promo-category">
+      <div class="category-header">
+        <div class="category-icon"><i class="fab fa-youtube"></i></div>
+        <div class="category-name">YouTube Shorts</div>
+        <span class="tag tag-green">4K 60FPS</span>
+      </div>
+      <div class="promo-grid">
+        <div class="promo-card">
+          <div class="promo-name">YouTube Short [A]</div>
+          <div class="promo-detail">Script Admin Server • 4K 60FPS • 1× Revisi</div>
+          <div class="promo-price">
+            <span class="price">Rp 90.000</span>
+            <span class="old-price">Rp 100.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20YouTube%20Short%20[A]" target="_blank">
+            <i class="fab fa-whatsapp"></i> Order
+          </a>
+        </div>
+        <div class="promo-card">
+          <div class="promo-name">YouTube Short [B]</div>
+          <div class="promo-detail">Script Konten Kreator • 4K 60FPS • 1× Revisi</div>
+          <div class="promo-price">
+            <span class="price">Rp 100.000</span>
+            <span class="old-price">Rp 160.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20YouTube%20Short%20[B]" target="_blank">
+            <i class="fab fa-whatsapp"></i> Order
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TikTok -->
+    <div class="promo-category">
+      <div class="category-header">
+        <div class="category-icon"><i class="fab fa-tiktok"></i></div>
+        <div class="category-name">TikTok Reels</div>
+        <span class="tag tag-green">4K 60FPS</span>
+      </div>
+      <div class="promo-grid">
+        <div class="promo-card">
+          <div class="promo-name">TikTok Reels [A]</div>
+          <div class="promo-detail">Script Admin Server • 4K 60FPS • 1× Revisi</div>
+          <div class="promo-price">
+            <span class="price">Rp 90.000</span>
+            <span class="old-price">Rp 100.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20TikTok%20Reels%20[A]" target="_blank">
+            <i class="fab fa-whatsapp"></i> Order
+          </a>
+        </div>
+        <div class="promo-card">
+          <div class="promo-name">TikTok Reels [B]</div>
+          <div class="promo-detail">Script Konten Kreator • 4K 60FPS • 1× Revisi</div>
+          <div class="promo-price">
+            <span class="price">Rp 100.000</span>
+            <span class="old-price">Rp 160.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20TikTok%20Reels%20[B]" target="_blank">
+            <i class="fab fa-whatsapp"></i> Order
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp Channel -->
+    <div class="promo-category">
+      <div class="category-header">
+        <div class="category-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="category-name">WhatsApp Channel</div>
+      </div>
+      <div class="promo-grid">
+        <div class="promo-card">
+          <div class="promo-name">WA Text + Gambar</div>
+          <div class="promo-price">
+            <span class="price">Rp 30.000</span>
+            <span class="old-price">Rp 40.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20WA%20Text%2BGambar" target="_blank">
+            <i class="fab fa-whatsapp"></i> Order
+          </a>
+        </div>
+        <div class="promo-card">
+          <div class="promo-name">WA Text Only</div>
+          <div class="promo-price">
+            <span class="price">Rp 20.000</span>
+            <span class="old-price">Rp 30.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20WA%20Text%20Only" target="_blank">
+            <i class="fab fa-whatsapp"></i> Order
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bundling -->
+    <div class="promo-category">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-gift"></i></div>
+        <div class="category-name">Bundling Hemat</div>
+        <span class="tag tag-gold">🔥 Recommended</span>
+      </div>
+      <div class="promo-grid">
+        <div class="promo-card featured">
+          <div class="promo-name">TikTok + YT Short [A]</div>
+          <div class="promo-detail">Hemat lebih banyak dengan bundling dua platform sekaligus.</div>
+          <div class="promo-price">
+            <span class="price">Rp 110.000</span>
+            <span class="old-price">Rp 130.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Bundling%20TikTok%2BYT%20A" target="_blank">
+            <i class="fab fa-whatsapp"></i> Order
+          </a>
+        </div>
+        <div class="promo-card featured">
+          <div class="promo-name">Owning Content</div>
+          <div class="promo-detail">
+            Video 4K 60FPS No Watermark<br>
+            <b>✅ Upload TikTok + YouTube</b><br>
+            <b>⚠️ Bukan Owning Content = DILARANG upload sosmed pribadi</b>
+          </div>
+          <div class="promo-price">
+            <span class="price">Rp 150.000</span>
+            <span class="old-price">Rp 200.000</span>
+          </div>
+          <a class="cta-btn" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20pesan%20Owning%20Content" target="_blank">
+            <i class="fab fa-whatsapp"></i> Order
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div style="padding-top: 40px;"></div>
+
+    <!-- About Hero Card -->
+    <div class="about-hero">
+      <div class="about-title">Anak Emak Store</div>
+      <p class="about-text">
+        Penyedia layanan digital terpercaya untuk <strong>server Minecraft</strong>, <strong>kreator konten</strong>, dan <strong>online store</strong>. Kami membantu meningkatkan <strong>brand awareness</strong> melalui promosi YouTube Shorts, TikTok, dan WhatsApp Channel dengan kualitas produksi tertinggi.
+      </p>
+      <div class="about-pills">
+        <div class="about-pill"><i class="fas fa-check-circle"></i> 100+ Klien Puas</div>
+        <div class="about-pill"><i class="fas fa-film"></i> 500+ Konten Sukses</div>
+        <div class="about-pill"><i class="fas fa-bolt"></i> Proses Instan 24/7</div>
+        <div class="about-pill"><i class="fas fa-shield-alt"></i> Garansi Kepuasan 100%</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">100+</div>
+        <div class="stat-lbl">Klien & Partner</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">500+</div>
+        <div class="stat-lbl">Konten Dibuat</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5rb+</div>
+        <div class="stat-lbl">Akun Terjual</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4.9★</div>
+        <div class="stat-lbl">Rating Rata-rata</div>
+      </div>
+    </div>
+
+    <!-- Partners -->
+    <div class="partners-header">
+      <div class="partners-label">Klien & Partner</div>
+      <div class="partners-count">100+ Server</div>
+    </div>
+
+    <div class="logos-grid">
+      <img src="KandangAlwi.png" alt="Kandang Alwi" onerror="this.style.display='none'">
+      <img src="alwination.jfif" alt="Alwi Nation" onerror="this.style.display='none'">
+      <img src="senovshop.png" alt="Senov Shop" onerror="this.style.display='none'">
+      <img src="survborn.png" alt="Survborn" onerror="this.style.display='none'">
+      <img src="xeta.png" alt="Xeta" onerror="this.style.display='none'">
+      <img src="arkonara.png" alt="Arkonara" onerror="this.style.display='none'">
+      <img src="cloud.png" alt="Cloud" onerror="this.style.display='none'">
+      <img src="crispy.png" alt="Crispy" onerror="this.style.display='none'">
+      <img src="crystal-removebg-preview.png" alt="Crystal" onerror="this.style.display='none'">
+      <img src="dcasta.png" alt="Dcasta" onerror="this.style.display='none'">
+      <img src="dexura.png" alt="Dexura" onerror="this.style.display='none'">
+      <img src="dolpinz.png" alt="Dolpinz" onerror="this.style.display='none'">
+      <img src="elmilius.png" alt="Elmilius" onerror="this.style.display='none'">
+      <img src="fk.png" alt="FK" onerror="this.style.display='none'">
+      <img src="heaven.png" alt="Heaven" onerror="this.style.display='none'">
+      <img src="hiver.png" alt="Hiver" onerror="this.style.display='none'">
+      <img src="kana.png" alt="Kana" onerror="this.style.display='none'">
+      <img src="kazakh.png" alt="Kazakh" onerror="this.style.display='none'">
+      <img src="kazuna.png" alt="Kazuna" onerror="this.style.display='none'">
+      <img src="kazuo.png" alt="Kazuo" onerror="this.style.display='none'">
+      <img src="kiriza.png" alt="Kiriza" onerror="this.style.display='none'">
+      <img src="leftycraft logo.png" alt="LeftyCraft" onerror="this.style.display='none'">
+      <img src="mawi.png" alt="Mawi" onerror="this.style.display='none'">
+      <img src="mineral.png" alt="Mineral" onerror="this.style.display='none'">
+      <img src="minewarz.png" alt="MineWarz" onerror="this.style.display='none'">
+      <img src="siluet.png" alt="Siluet" onerror="this.style.display='none'">
+      <img src="genz.jpeg" alt="Genz" onerror="this.style.display='none'">
+      <img src="skyz.png" alt="Skyz" onerror="this.style.display='none'">
+      <img src="voltraz.png" alt="Voltraz" onerror="this.style.display='none'">
+      <img src="wayang.png" alt="Wayang" onerror="this.style.display='none'">
+      <img src="weaver.png" alt="Weaver" onerror="this.style.display='none'">
+      <img src="zaynic.png" alt="Zaynic" onerror="this.style.display='none'">
+      <img src="seria.jpg" alt="Seria" onerror="this.style.display='none'">
+      <img src="rayzen.jpeg" alt="Rayzen" onerror="this.style.display='none'">
+      <img src="netherking.jpg" alt="Netherking" onerror="this.style.display='none'">
+      <img src="nexus.png" alt="Nexus" onerror="this.style.display='none'">
+      <img src="voyality.jpeg" alt="Voyality" onerror="this.style.display='none'">
+      <img src="wavesmp.jpeg" alt="WavesMP" onerror="this.style.display='none'">
+      <img src="WhatsApp Image 2025-05-26 at 13.18.21.jpeg" alt="Partner" onerror="this.style.display='none'">
+      <img src="arteric.jpeg" alt="Arteric" onerror="this.style.display='none'">
+      <img src="ARVENIA.png" alt="Arvenia" onerror="this.style.display='none'">
+      <img src="CIHUY.png" alt="Cihuy" onerror="this.style.display='none'">
+      <img src="cosmic.jpeg" alt="Cosmic" onerror="this.style.display='none'">
+      <img src="Craftnesia.jpeg" alt="Craftnesia" onerror="this.style.display='none'">
+      <img src="ELYTHERIA.png" alt="Elytheria" onerror="this.style.display='none'">
+      <img src="koyarp.jpeg" alt="Koyarp" onerror="this.style.display='none'">
+      <img src="Kaizen1.png" alt="Kaizen" onerror="this.style.display='none'">
+      <img src="Legacy.jpeg" alt="Legacy" onerror="this.style.display='none'">
+      <img src="lumirith.jpeg" alt="Lumirith" onerror="this.style.display='none'">
+      <img src="NEXOVERSE.png" alt="Nexoverse" onerror="this.style.display='none'">
+      <img src="NEXO.png" alt="Nexo" onerror="this.style.display='none'">
+      <img src="nusantara.jpeg" alt="Nusantara" onerror="this.style.display='none'">
+      <img src="odinary.jpeg" alt="Odinary" onerror="this.style.display='none'">
+      <img src="querty.jpeg" alt="Querty" onerror="this.style.display='none'">
+      <img src="rebelsmp.jpeg" alt="RebelSMP" onerror="this.style.display='none'">
+      <img src="skyyz.jpeg" alt="Skyyz" onerror="this.style.display='none'">
+      <img src="voracity.jpeg" alt="Voracity" onerror="this.style.display='none'">
+      <img src="ARCANA.png" alt="Arcana" onerror="this.style.display='none'">
+      <img src="Neuvana-Light.png" alt="Neuvana" onerror="this.style.display='none'">
+      <img src="AERO.png" alt="Aero" onerror="this.style.display='none'">
+      <img src="AXERO.jfif" alt="Axero" onerror="this.style.display='none'">
+      <img src="ayelsmp.jpeg" alt="AyelSMP" onerror="this.style.display='none'">
+      <img src="BAKWAN JAGUNG.png" alt="Bakwan Jagung" onerror="this.style.display='none'">
+      <img src="BEEBAZ.png" alt="Beebaz" onerror="this.style.display='none'">
+      <img src="cyclops.jfif" alt="Cyclops" onerror="this.style.display='none'">
+      <img src="elvaria.jpeg" alt="Elvaria" onerror="this.style.display='none'">
+      <img src="EMPIRE.jpeg" alt="Empire" onerror="this.style.display='none'">
+      <img src="Khazakh.png" alt="Khazakh" onerror="this.style.display='none'">
+      <img src="logo bg transparan.png" alt="Logo" onerror="this.style.display='none'">
+      <img src="LUMIRITH.png" alt="Lumirith" onerror="this.style.display='none'">
+      <img src="Marlin MC.png" alt="Marlin MC" onerror="this.style.display='none'">
+      <img src="Minesive.jpeg" alt="Minesive" onerror="this.style.display='none'">
+      <img src="MOVERA LOGO.png" alt="Movera" onerror="this.style.display='none'">
+      <img src="puresmp.jfif" alt="PureSMP" onerror="this.style.display='none'">
+      <img src="Reality Project.png" alt="Reality Project" onerror="this.style.display='none'">
+      <img src="Rozen Legend.jpeg" alt="Rozen Legend" onerror="this.style.display='none'">
+      <img src="SYLVARA.png" alt="Sylvara" onerror="this.style.display='none'">
+      <img src="SYNCARA.png" alt="Syncara" onerror="this.style.display='none'">
+      <img src="Voxen 1.png" alt="Voxen" onerror="this.style.display='none'">
+      <img src="WhatsApp Image 2026-01-08 at 10.12.42.jpeg" alt="Partner" onerror="this.style.display='none'">
+      <img src="WhatsApp Image 2026-01-21 at 12.10.45.jpeg" alt="Partner" onerror="this.style.display='none'">
+      <img src="wildmare.png" alt="Wildmare" onerror="this.style.display='none'">
+      <img src="yozora.jpeg" alt="Yozora" onerror="this.style.display='none'">
+      <img src="zelestial.jpeg" alt="Zelestial" onerror="this.style.display='none'">
+      <img src="Catalux.jpeg" alt="Catalux" onerror="this.style.display='none'">
+      <img src="Noesantara.png" alt="Noesantara" onerror="this.style.display='none'">
+      <img src="MF.png" alt="MF" onerror="this.style.display='none'">
+      <img src="minesteal.jpeg" alt="Minesteal" onerror="this.style.display='none'">
+      <img src="REVORDIAN LEGEND.jpeg" alt="Revordian Legend" onerror="this.style.display='none'">
+      <img src="Sirhc.jpeg" alt="Sirhc" onerror="this.style.display='none'">
+      <img src="stellar.png" alt="Stellar" onerror="this.style.display='none'">
+      <img src="survival craft.jfif" alt="Survival Craft" onerror="this.style.display='none'">
+      <img src="UNDERCITY-removebg-preview.png" alt="Undercity" onerror="this.style.display='none'">
+      <img src="voltarz.jpeg" alt="Voltarz" onerror="this.style.display='none'">
+      <img src="xanthe.jpeg" alt="Xanthe" onerror="this.style.display='none'">
+      <img src="Chaverix.png" alt="Chaverix" onerror="this.style.display='none'">
+      <img src="Clarity.jfif" alt="Clarity" onerror="this.style.display='none'">
+      <img src="cyclops.jpeg" alt="Cyclops" onerror="this.style.display='none'">
+      <img src="garuda.jpeg" alt="Garuda" onerror="this.style.display='none'">
+      <img src="Hypix.jpeg" alt="Hypix" onerror="this.style.display='none'">
+      <img src="Logo Nan SMP.png" alt="Logo Nan SMP" onerror="this.style.display='none'">
+      <img src="eclipsaca.jpg" alt="Eclipsaca" onerror="this.style.display='none'">
+      <img src="leftycraft.png" alt="Leftycraft" onerror="this.style.display='none'">
+      <img src="kitasmp.png" alt="Kita SMP" onerror="this.style.display='none'">
+      <img src="KAELVARIA.PNG" alt="Kaelvaria" onerror="this.style.display='none'">
+      <img src="iciki.jpeg" alt="Iciki" onerror="this.style.display='none'">
+      <img src="GammaCube_Studio.png" alt="GammaCube Studio" onerror="this.style.display='none'">
+      <img src="evo pixel.jpeg" alt="Evo Pixel" onerror="this.style.display='none'">
+      <img src="eternal.png" alt="Eternal" onerror="this.style.display='none'">
+      <img src="cipherfulllogo.png" alt="Cipher" onerror="this.style.display='none'">
+      <img src="Chaverix.jpeg" alt="Chaverix" onerror="this.style.display='none'">
+      <img src="atlas.jpeg" alt="Atlas" onerror="this.style.display='none'">
+      <img src="arelion.jpeg" alt="Arelion" onerror="this.style.display='none'">
+      <img src="apeiron.png" alt="Apeiron" onerror="this.style.display='none'">
+      <img src="alzhardcore.jpeg" alt="Alzhardcore" onerror="this.style.display='none'">
+      <img src="vilex.jpeg" alt="Vilex" onerror="this.style.display='none'">
+      <img src="vanasaga.png" alt="Vanasaga" onerror="this.style.display='none'">
+      <img src="Valorix nation.jpeg" alt="Valorix Nation" onerror="this.style.display='none'">
+      <img src="valoria.jpeg" alt="Valoria" onerror="this.style.display='none'">
+      <img src="valence.jpeg" alt="Valence" onerror="this.style.display='none'">
+      <img src="trinity.png" alt="Trinity" onerror="this.style.display='none'">
+      <img src="stecu.jpeg" alt="Stecu" onerror="this.style.display='none'">
+      <img src="silvavita.jpeg" alt="Silvavita" onerror="this.style.display='none'">
+      <img src="siluet project.jpeg" alt="Siluet Project" onerror="this.style.display='none'">
+      <img src="shadowyn.png" alt="Shadowyn" onerror="this.style.display='none'">
+      <img src="relx.jpeg" alt="Relx" onerror="this.style.display='none'">
+      <img src="projects.png" alt="Projects" onerror="this.style.display='none'">
+      <img src="potatto.jpeg" alt="Potatto" onerror="this.style.display='none'">
+      <img src="phyton.jpeg" alt="Phyton" onerror="this.style.display='none'">
+      <img src="NC 2.png" alt="NC" onerror="this.style.display='none'">
+      <img src="nan smp.jpeg" alt="Nan SMP" onerror="this.style.display='none'">
+      <img src="minecyloria.jpeg" alt="Minecyloria" onerror="this.style.display='none'">
+      <img src="mieayam.jpeg" alt="Mie Ayam" onerror="this.style.display='none'">
+      <img src="litherra.jpeg" alt="Litherra" onerror="this.style.display='none'">
+      <img src="legacy smp.PNG" alt="Legacy SMP" onerror="this.style.display='none'">
+      <img src="aeroblast.jpeg" alt="Aeroblast" onerror="this.style.display='none'">
+      <img src="aethernox.jpeg" alt="Aethernox" onerror="this.style.display='none'">
+      <img src="eclip.png" alt="Eclip" onerror="this.style.display='none'">
+      <img src="hitman.jpeg" alt="Hitman" onerror="this.style.display='none'">
+      <img src="zerathis.jpeg" alt="Zerathis" onerror="this.style.display='none'">
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Contact -->
+    <div class="section-header">
+      <div>
+        <div class="section-label">Hubungi Kami</div>
+        <div class="section-title">Siap Melayani Kamu</div>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon wa"><i class="fab fa-whatsapp"></i></div>
+        <div class="contact-name">WhatsApp</div>
+        <div class="contact-handle">+62 831-9221-5487</div>
+        <a class="cta-btn cta-wa" href="https://wa.me/6283192215487?text=Halo%20Min,%20saya%20mau%20tanya%20tentang%20toko" target="_blank">
+          <i class="fab fa-whatsapp"></i> Chat Sekarang
+        </a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon tt"><i class="fab fa-tiktok"></i></div>
+        <div class="contact-name">TikTok</div>
+        <div class="contact-handle">@anakemak.id2</div>
+        <a class="cta-btn cta-tt" href="https://www.tiktok.com/@anakemak.id2" target="_blank">
+          <i class="fab fa-tiktok"></i> Follow
+        </a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon yt"><i class="fab fa-youtube"></i></div>
+        <div class="contact-name">YouTube</div>
+        <div class="contact-handle">@anakemakid</div>
+        <a class="cta-btn cta-yt" href="https://www.youtube.com/@anakemakid" target="_blank">
+          <i class="fab fa-youtube"></i> Subscribe
+        </a>
+      </div>
+    </div>
+    <div style="height: 60px;"></div>
+  </section>
+
+</div>
+
+<!-- TOASTS -->
+<div id="toasts"></div>
+
+<script>
+  // Tab navigation
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      link.classList.add('active');
+      document.getElementById(link.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // ——— TESTIMONIALS ———
+  // Cara isi:
+  //   avatar: 'nama-file.jpg'   → foto profil pembeli (letakkan di folder yang sama)
+  //   screenshot: 'ss-1.jpg'    → screenshot chat/bukti pembelian
+  //   platform: 'wa' / 'tg' / 'ig'  → badge platform di foto profil
+  //   Jika avatar/screenshot tidak ada, akan fallback ke inisial / teks quote
+  const testimonials = [
+    {
+      name: 'RafaelGanz', initial: 'R', product: 'MC Java & Bedrock', stars: 5,
+      avatar: '',        // ganti: 'foto-rafael.jpg'
+      screenshot: '',    // ganti: 'ss-rafael.jpg'
+      platform: 'wa',
+      text: 'Mantap banget! Akun langsung aktif dalam hitungan menit. Seller ramah dan fast respon. Recommended!',
+      date: '2 hari lalu'
+    },
+    {
+      name: 'DindaSky', initial: 'D', product: 'Bedrock Windows', stars: 5,
+      avatar: '', screenshot: '', platform: 'wa',
+      text: 'Murah tapi kualitas gak murahan. Udah dipake seminggu lancar terus. Garansi beneran dijaga!',
+      date: '5 hari lalu'
+    },
+    {
+      name: 'AlfianMC', initial: 'A', product: 'MC Redeem Code', stars: 5,
+      avatar: '', screenshot: '', platform: 'tg',
+      text: 'Code-nya fresh, langsung bisa redeem. Proses cepet banget ga sampe 5 menit. Bakal balik lagi!',
+      date: '1 minggu lalu'
+    },
+    {
+      name: 'Zeynna_', initial: 'Z', product: 'MC Java & Bedrock', stars: 5,
+      avatar: '', screenshot: '', platform: 'wa',
+      text: 'Udah order 3x, ga pernah kecewa. Harga paling murah tapi garansi seumur hidup. Gas!',
+      date: '1 minggu lalu'
+    },
+    {
+      name: 'BryanFire', initial: 'B', product: 'Bedrock Windows', stars: 5,
+      avatar: '', screenshot: '', platform: 'ig',
+      text: 'Beli karena rekomendasi temen, ternyata emang worth it bgt. Akun stabil, nama bisa diganti. 10/10!',
+      date: '2 minggu lalu'
+    },
+    {
+      name: 'NiaPlays', initial: 'N', product: 'MC Java & Bedrock', stars: 5,
+      avatar: '', screenshot: '', platform: 'wa',
+      text: 'Seller amanah bgt. Chat WA langsung dibalas. Akun masih aman sampe sekarang udah 3 bulan. Makasih!',
+      date: '2 minggu lalu'
+    },
+    {
+      name: 'HaziqCraft', initial: 'H', product: 'MC Redeem Code', stars: 5,
+      avatar: '', screenshot: '', platform: 'wa',
+      text: 'Beli redeem code buat adek, langsung bisa dimainkan. Legit 100%, code ga expired. Jujur dan terpercaya.',
+      date: '3 minggu lalu'
+    },
+    {
+      name: 'ValeriaSMP', initial: 'V', product: 'Bedrock Windows', stars: 5,
+      avatar: '', screenshot: '', platform: 'tg',
+      text: 'Harga 40rb dapet Bedrock?! Gila murah banget. Langsung aktif, bisa main sama temen. Worth every penny!',
+      date: '3 minggu lalu'
+    },
+    {
+      name: 'OmarJava', initial: 'O', product: 'MC Java & Bedrock', stars: 5,
+      avatar: '', screenshot: '', platform: 'wa',
+      text: 'Trustworthy seller! Garansi beneran ada, pas nicknameku ke-reset langsung dibantu fix dalam 10 menit.',
+      date: '1 bulan lalu'
+    },
+    {
+      name: 'ClarissaX', initial: 'C', product: 'MC Java & Bedrock', stars: 5,
+      avatar: '', screenshot: '', platform: 'ig',
+      text: 'Aku takut awalnya beli online, ternyata aman banget. Akun langsung private dan bisa dipakai. Makasih!',
+      date: '1 bulan lalu'
+    },
+    {
+      name: 'FirmanGG', initial: 'F', product: 'Bedrock Windows', stars: 5,
+      avatar: '', screenshot: '', platform: 'wa',
+      text: 'Proses beli gampang banget tinggal WA, bayar, dapet akun. Gak sampe 10 menit. Super fast!',
+      date: '1 bulan lalu'
+    },
+    {
+      name: 'YukiSMP', initial: 'Y', product: 'MC Redeem Code', stars: 5,
+      avatar: '', screenshot: '', platform: 'wa',
+      text: 'Beli buat hadikin pacar, kodenya langsung jalan. Seller baik bgt mau bantu setup juga. ❤️',
+      date: '1 bulan lalu'
+    },
+  ];
+
+  const platformIcon = { wa: 'fab fa-whatsapp', tg: 'fab fa-telegram', ig: 'fab fa-instagram' };
+
+  function buildTestiCard(t) {
+    // Avatar: foto profil atau fallback inisial
+    const avatarInner = t.avatar
+      ? `<img src="${t.avatar}" alt="${t.name}" onerror="this.parentElement.innerHTML='${t.initial}'">`
+      : t.initial;
+
+    // Platform badge
+    const badge = t.platform
+      ? `<div class="testi-platform-badge ${t.platform}"><i class="${platformIcon[t.platform] || 'fas fa-comment'}"></i></div>`
+      : '';
+
+    // Content: screenshot jika ada, fallback ke teks quote
+    const content = t.screenshot
+      ? `<div class="testi-screenshot">
+           <img src="${t.screenshot}" alt="Testimoni ${t.name}" loading="lazy"
+                onerror="this.closest('.testi-screenshot').outerHTML='<div class=\\'testi-text\\'>&ldquo;${t.text}&rdquo;</div>'">
+           <div class="testi-screenshot-label"><i class="fas fa-expand-alt"></i> Hover untuk lihat lengkap</div>
+         </div>`
+      : `<div class="testi-text">&ldquo;${t.text}&rdquo;</div>`;
+
+    return `
+      <div class="testi-card">
+        <div class="testi-top">
+          <div class="testi-avatar-wrap">
+            <div class="testi-avatar">${avatarInner}</div>
+            ${badge}
+          </div>
+          <div class="testi-meta">
+            <div class="testi-name">${t.name}</div>
+            <div class="testi-product">${t.product}</div>
+          </div>
+          <div class="testi-stars">${'★'.repeat(t.stars)}</div>
+        </div>
+        ${content}
+        <div class="testi-footer">
+          <div class="testi-verified"><i class="fas fa-check-circle"></i> Verified Buyer</div>
+          <div class="testi-date">${t.date}</div>
+        </div>
+      </div>`;
+  }
+
+  const half = Math.ceil(testimonials.length / 2);
+  const row1items = testimonials.slice(0, half);
+  const row2items = testimonials.slice(half);
+
+  const r1html = [...row1items, ...row1items].map(buildTestiCard).join('');
+  const r2html = [...row2items, ...row2items].map(buildTestiCard).join('');
+
+  document.getElementById('trow1').innerHTML = r1html;
+  document.getElementById('trow2').innerHTML = r2html;
+
+
+  const purchases = [
+    { name: 'Budi', product: 'MC Java & Bedrock', price: 'Rp 150.000' },
+    { name: 'Siti', product: 'YouTube Short [A]', price: 'Rp 90.000' },
+    { name: 'Andi', product: 'TikTok Reels [A]', price: 'Rp 90.000' },
+    { name: 'Rina', product: 'Bundling TikTok+YT', price: 'Rp 110.000' },
+    { name: 'Dimas', product: 'Bedrock Windows', price: 'Rp 40.000' },
+    { name: 'Putri', product: 'Redeem Code', price: 'Rp 315.000' },
+  ];
+
+  function showToast() {
+    const container = document.getElementById('toasts');
+    const item = purchases[Math.floor(Math.random() * purchases.length)];
+    const now = new Date();
+    const time = now.getHours() + ':' + String(now.getMinutes()).padStart(2,'0');
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `
+      <div class="toast-icon"><i class="fas fa-check"></i></div>
+      <div class="toast-main">
+        <div class="toast-name">${item.name} membeli ${item.product}</div>
+        <div class="toast-info">${time} · ${item.price}</div>
+      </div>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 4200);
+  }
+
+  setTimeout(showToast, 2000);
+  setInterval(showToast, 25000 + Math.random() * 15000);
+</script>
+
+</body>
+</html>
